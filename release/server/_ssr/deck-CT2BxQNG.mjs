@@ -1,11 +1,10 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
-import { d as IconScissors, h as cn, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-DVIIYE3U.mjs";
-import { t as CardTile } from "./card-tile-CQcReW_d.mjs";
-import { t as Input } from "./input-Dbmkx0p7.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/deck-BPWQl1Kz.js
+import { h as cn, w as useOracleStore } from "./store-okPazmL_.mjs";
+import { t as AppShell } from "./app-shell-BSyGZXbT.mjs";
+import { t as CardTile } from "./card-tile-ppmAzyLm.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/deck-CT2BxQNG.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var LIGHT = /удач|светл|благ|любов|урожа|жив(ая|ой) вод|счастлив|дар|плод|луг|мир|радост|свадьб|мёд|мёд|тепло|исцел|удачн/i;
@@ -55,54 +54,49 @@ function DeckPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppShell, {
 		scene: "book",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "flex flex-col gap-8",
+			className: "book-ink flex flex-col gap-8",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
 					className: "max-w-xl",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "overline",
-							children: "Сто восемь нитей"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-							className: "display-title mt-4 text-[2.8rem] tracking-[0.12em] sm:text-6xl",
-							children: "Гримуар"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule mt-5 w-20" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-5 text-sm leading-[1.6] text-muted-foreground",
-							children: "Сто восемь нитей полотна. Нажмите карту, чтобы прочитать её."
-						})
-					]
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "display-title text-[2.6rem] sm:text-5xl",
+						children: "Гримуар"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-4 max-w-sm text-sm leading-[1.6]",
+						children: "Сто восемь нитей. Нажмите карту, чтобы прочитать её."
+					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 					className: "flex flex-col gap-3 sm:flex-row sm:items-center",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Input, {
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 						value: query,
 						onChange: (e) => setQuery(e.target.value),
 						placeholder: "Название, номер, ключевые слова",
-						className: "sm:max-w-sm"
+						className: "field-ink h-11 w-full max-w-sm px-0 text-sm"
 					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "flex gap-1",
+						className: "flex gap-4",
 						children: [
 							["all", "Все"],
-							["light", "Светлые нити"],
-							["dark", "Тёмные нити"]
+							["light", "Светлые"],
+							["dark", "Тёмные"]
 						].map(([id, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
 							onClick: () => setFilter(id),
-							className: cn("h-11 px-3 text-sm transition-colors duration-150", filter === id ? "btn-carmine" : "text-muted-foreground hover:text-sand"),
+							className: cn("text-sm", filter === id ? "text-[#6d1414]" : "opacity-60"),
 							children: label
 						}, id))
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "grid grid-cols-2 gap-5 md:gap-6",
-					children: visible.map((card) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTile, { card }, card.number))
+					children: visible.map((card) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTile, {
+						card,
+						className: "card-on-page"
+					}, card.number))
 				}),
-				visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-col items-start gap-3 py-16 text-sm text-muted-foreground",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconScissors, { className: "text-primary" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", { children: "Нить не нашлась." })]
+				visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "py-10 text-sm",
+					children: "Нить не нашлась."
 				}) : null
 			]
 		})

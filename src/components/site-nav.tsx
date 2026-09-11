@@ -54,7 +54,9 @@ export function SiteNav() {
               aria-label={sound ? "Выключить звук" : "Включить звук"}
               title={sound ? "Звук включён" : "Звук выключен"}
             >
-              {sound ? <IconHearth /> : <IconSpindle />}
+              <span className={cn("sound-mark", sound && "is-on")}>
+                <IconHearth />
+              </span>
             </button>
             <nav className="hidden items-center gap-1 md:flex">
               {ITEMS.map((item) => {

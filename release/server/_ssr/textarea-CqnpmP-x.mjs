@@ -4,14 +4,20 @@ import { S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { n as createServerFn } from "./ssr.mjs";
 import { o as object, s as string } from "../_libs/zod.mjs";
 import { g as createSsrRpc, h as cn } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-DVIIYE3U.mjs";
+import { t as AppShell } from "./app-shell-BSyGZXbT.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
-import { t as Input } from "./input-Dbmkx0p7.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/textarea-DDVGY8WL.js
+//#region node_modules/.nitro/vite/services/ssr/assets/textarea-CqnpmP-x.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var loginStudio = createServerFn({ method: "POST" }).validator((input) => object({ password: string().min(1).max(80) }).parse(input)).handler(createSsrRpc("6f97e1772b0eeea273dec8a8561c60a502e145a8c6603fb5956ea69b783f6165"));
 var studioStatus = createServerFn({ method: "GET" }).handler(createSsrRpc("45a8c2c978ea35732119a5a574a54f782114a24d170897a22ea1cf1e1acd1fd4"));
+function Input({ className, type, ...props }) {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+		type,
+		className: cn("field-ink flex h-12 w-full px-4 text-sm text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50", className),
+		...props
+	});
+}
 function StudioGate({ children }) {
 	const [state, setState] = (0, import_react.useState)("check");
 	const [password, setPassword] = (0, import_react.useState)("");
@@ -83,4 +89,4 @@ function Textarea({ className, ...props }) {
 	});
 }
 //#endregion
-export { StudioGate as n, Textarea as r, Label as t };
+export { Textarea as i, Label as n, StudioGate as r, Input as t };

@@ -2,12 +2,11 @@ import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as cardDisplayTitle, o as padCardNumber } from "./types-BvDlfgVm.mjs";
-import { p as IconThreadKnot, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-DVIIYE3U.mjs";
-import { t as Button } from "./button-Cmdjd3ge.mjs";
-import { l as spreadTitle } from "./router-D27DC4Q6.mjs";
+import { w as useOracleStore } from "./store-okPazmL_.mjs";
+import { t as AppShell } from "./app-shell-BSyGZXbT.mjs";
+import { l as spreadTitle } from "./router-Bicaqtts.mjs";
 import { a as updateJournalNote, i as removeJournalEntry, n as loadJournal } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/journal-BFRO2Iy2.js
+//#region node_modules/.nitro/vite/services/ssr/assets/journal-F-er1wJ8.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function formatDate(iso, dayOnly = false) {
@@ -37,44 +36,30 @@ function JournalPage() {
 		scene: "casket",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
 			className: "max-w-xl",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "overline",
-					children: "Прошлые нити"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-					className: "display-title mt-4 text-[2.8rem] tracking-[0.12em] sm:text-6xl",
-					children: "Архив Полотна"
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule mt-5 w-20" }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-5 text-sm leading-[1.6] text-muted-foreground",
-					children: "Сохранённые расклады остаются на этом устройстве."
-				}),
-				entries.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-					value: query,
-					onChange: (e) => setQuery(e.target.value),
-					placeholder: "Поиск по вопросу",
-					className: "field-ink mt-6 h-12 w-full max-w-sm px-4 text-sm"
-				}) : null
-			]
-		}), visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "mt-16 flex max-w-sm flex-col items-start gap-4",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconThreadKnot, { className: "text-primary" }),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "text-sm leading-relaxed text-muted-foreground",
-					children: entries.length ? "Нить не нашлась." : "Пока пусто. Вытяните нить и сохраните расклад."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-					asChild: true,
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				className: "display-title text-[2.6rem] sm:text-5xl",
+				children: "Архив"
+			}), entries.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+				value: query,
+				onChange: (e) => setQuery(e.target.value),
+				placeholder: "Поиск по вопросу",
+				className: "field-ink mt-6 h-12 w-full max-w-sm px-0 text-sm"
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				className: "mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground",
+				children: [
+					"Ларец ещё пуст.",
+					" ",
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
 						to: "/reading",
-						children: "Вытянуть карту"
+						className: "text-sand",
+						children: "Сплести нить"
 					})
-				})
-			]
-		}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+				]
+			})]
+		}), entries.length && visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+			className: "mt-10 text-sm text-muted-foreground",
+			children: "Нить не нашлась."
+		}) : visible.length ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
 			className: "mt-16 max-w-xl space-y-16",
 			children: visible.map((entry) => /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("li", {
 				className: "knot-entry",
@@ -88,7 +73,7 @@ function JournalPage() {
 						className: "flex items-start justify-between gap-3",
 						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", { children: [
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-								className: "overline",
+								className: "text-xs text-muted-foreground",
 								children: formatDate(entry.createdAt, entry.kind === "day")
 							}),
 							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
@@ -124,7 +109,7 @@ function JournalPage() {
 								children: [card?.imageData ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 									src: card.imageData,
 									alt: "",
-									className: "aspect-card w-full object-cover"
+									className: "card-on-page aspect-card w-full object-cover"
 								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 									className: "flex aspect-card items-center justify-center bg-card text-[10px] text-muted-foreground",
 									children: padCardNumber(num)
@@ -143,11 +128,11 @@ function JournalPage() {
 						defaultValue: entry.note ?? "",
 						placeholder: "Своя заметка к раскладу",
 						onBlur: (e) => setEntries(updateJournalNote(entry.id, e.target.value)),
-						className: "field-ink mt-5 min-h-20 w-full px-3 py-2 text-sm"
+						className: "field-ink mt-5 min-h-20 w-full px-0 py-2 text-sm"
 					})
 				]
 			}, entry.id))
-		})]
+		}) : null]
 	});
 }
 //#endregion

@@ -1,12 +1,10 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
-import { IconThreadKnot } from "@/components/brand-icons";
 import { AppShell } from "@/components/app-shell";
 import { loadJournal, removeJournalEntry, updateJournalNote } from "@/lib/oracle/journal";
 import { spreadTitle } from "@/lib/oracle/spreads";
 import { cardDisplayTitle, padCardNumber } from "@/lib/oracle/types";
 import { useOracleStore } from "@/lib/oracle/store";
-import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/journal")({ component: JournalPage });
 
@@ -41,40 +39,36 @@ function JournalPage() {
   return (
     <AppShell scene="casket">
       <header className="max-w-xl">
-        <p className="overline">Прошлые нити</p>
-        <h1 className="display-title mt-4 text-[2.8rem] tracking-[0.12em] sm:text-6xl">Архив Полотна</h1>
-        <div className="gold-rule mt-5 w-20" />
-        <p className="mt-5 text-sm leading-[1.6] text-muted-foreground">
-          Сохранённые расклады остаются на этом устройстве.
-        </p>
+        <h1 className="display-title text-[2.6rem] sm:text-5xl">Архив</h1>
         {entries.length ? (
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Поиск по вопросу"
-            className="field-ink mt-6 h-12 w-full max-w-sm px-4 text-sm"
+            className="field-ink mt-6 h-12 w-full max-w-sm px-0 text-sm"
           />
-        ) : null}
+        ) : (
+          <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
+            Ларец ещё пуст.{" "}
+            <Link to="/reading" className="text-sand">
+              Сплести нить
+            </Link>
+          </p>
+        )}
       </header>
 
-      {visible.length === 0 ? (
-        <div className="mt-16 flex max-w-sm flex-col items-start gap-4">
-          <IconThreadKnot className="text-primary" />
-          <p className="text-sm leading-relaxed text-muted-foreground">
-            {entries.length ? "Нить не нашлась." : "Пока пусто. Вытяните нить и сохраните расклад."}
-          </p>
-          <Button asChild>
-            <Link to="/reading">Вытянуть карту</Link>
-          </Button>
-        </div>
-      ) : (
+      {entries.length && visible.length === 0 ? (
+        <p className="mt-10 text-sm text-muted-foreground">Нить не нашлась.</p>
+      ) : visible.length ? (
         <ul className="mt-16 max-w-xl space-y-16">
           {visible.map((entry) => (
             <li key={entry.id} className="knot-entry">
               <img src="/scenes/knot.webp" alt="" className="knot-prop" />
               <div className="flex items-start justify-between gap-3">
                 <div>
-                  <p className="overline">{formatDate(entry.createdAt, entry.kind === "day")}</p>
+                  <p className="text-xs text-muted-foreground">
+                    {formatDate(entry.createdAt, entry.kind === "day")}
+                  </p>
                   <p className="mt-2 font-display text-2xl text-sand">
                     {entry.kind === "day" ? "Нить дня" : spreadTitle(entry.spread, entry.cards.length)}
                   </p>
@@ -99,7 +93,7 @@ function JournalPage() {
                     <li key={`${entry.id}-${num}`}>
                       <Link to="/card/$number" params={{ number: String(num) }} className="block w-16">
                         {card?.imageData ? (
-                          <img src={card.imageData} alt="" className="aspect-card w-full object-cover" />
+                          <img src={card.imageData} alt="" className="card-on-page aspect-card w-full object-cover" />
                         ) : (
                           <span className="flex aspect-card items-center justify-center bg-card text-[10px] text-muted-foreground">
                             {padCardNumber(num)}
@@ -118,12 +112,12 @@ function JournalPage() {
                 defaultValue={entry.note ?? ""}
                 placeholder="Своя заметка к раскладу"
                 onBlur={(e) => setEntries(updateJournalNote(entry.id, e.target.value))}
-                className="field-ink mt-5 min-h-20 w-full px-3 py-2 text-sm"
+                className="field-ink mt-5 min-h-20 w-full px-0 py-2 text-sm"
               />
             </li>
           ))}
         </ul>
-      )}
+      ) : null}
     </AppShell>
   );
 }

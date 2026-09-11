@@ -1,13 +1,12 @@
 import { S as require_jsx_runtime, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as isCardFilled } from "./types-BvDlfgVm.mjs";
 import { u as IconRoot, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-DVIIYE3U.mjs";
+import { t as AppShell } from "./app-shell-BSyGZXbT.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { t as CardTile } from "./card-tile-CQcReW_d.mjs";
-import { t as Input } from "./input-Dbmkx0p7.mjs";
-import { n as StudioGate, r as Textarea, t as Label } from "./textarea-DDVGY8WL.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/studio.index-D82mejPq.js
+import { t as CardTile } from "./card-tile-ppmAzyLm.mjs";
+import { i as Textarea, n as Label, r as StudioGate, t as Input } from "./textarea-CqnpmP-x.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/studio.index-C62qtpjv.js
 var import_jsx_runtime = require_jsx_runtime();
 function StudioPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StudioGate, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StudioInner, {}) });

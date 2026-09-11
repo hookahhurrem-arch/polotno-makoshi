@@ -1,9 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { IconScissors } from "@/components/brand-icons";
 import { AppShell } from "@/components/app-shell";
 import { CardTile } from "@/components/card-tile";
-import { Input } from "@/components/ui/input";
 import { threadTone } from "@/lib/oracle/polarity";
 import { useOracleStore } from "@/lib/oracle/store";
 import { cn } from "@/lib/utils";
@@ -50,41 +48,34 @@ function DeckPage() {
 
   return (
     <AppShell scene="book">
-      <div className="flex flex-col gap-8">
+      <div className="book-ink flex flex-col gap-8">
         <header className="max-w-xl">
-          <p className="overline">Сто восемь нитей</p>
-          <h1 className="display-title mt-4 text-[2.8rem] tracking-[0.12em] sm:text-6xl">Гримуар</h1>
-          <div className="gold-rule mt-5 w-20" />
-          <p className="mt-5 text-sm leading-[1.6] text-muted-foreground">
-            Сто восемь нитей полотна. Нажмите карту, чтобы прочитать её.
+          <h1 className="display-title text-[2.6rem] sm:text-5xl">Гримуар</h1>
+          <p className="mt-4 max-w-sm text-sm leading-[1.6]">
+            Сто восемь нитей. Нажмите карту, чтобы прочитать её.
           </p>
         </header>
 
         <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <Input
+          <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="Название, номер, ключевые слова"
-            className="sm:max-w-sm"
+            className="field-ink h-11 w-full max-w-sm px-0 text-sm"
           />
-          <div className="flex gap-1">
+          <div className="flex gap-4">
             {(
               [
                 ["all", "Все"],
-                ["light", "Светлые нити"],
-                ["dark", "Тёмные нити"],
+                ["light", "Светлые"],
+                ["dark", "Тёмные"],
               ] as const
             ).map(([id, label]) => (
               <button
                 key={id}
                 type="button"
                 onClick={() => setFilter(id)}
-                className={cn(
-                  "h-11 px-3 text-sm transition-colors duration-150",
-                  filter === id
-                    ? "btn-carmine"
-                    : "text-muted-foreground hover:text-sand",
-                )}
+                className={cn("text-sm", filter === id ? "text-[#6d1414]" : "opacity-60")}
               >
                 {label}
               </button>
@@ -94,14 +85,11 @@ function DeckPage() {
 
         <div className="grid grid-cols-2 gap-5 md:gap-6">
           {visible.map((card) => (
-            <CardTile key={card.number} card={card} />
+            <CardTile key={card.number} card={card} className="card-on-page" />
           ))}
         </div>
         {visible.length === 0 ? (
-          <div className="flex flex-col items-start gap-3 py-16 text-sm text-muted-foreground">
-            <IconScissors className="text-primary" />
-            <p>Нить не нашлась.</p>
-          </div>
+          <p className="py-10 text-sm">Нить не нашлась.</p>
         ) : null}
       </div>
     </AppShell>

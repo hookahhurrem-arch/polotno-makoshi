@@ -1,5 +1,4 @@
 import type { ReactNode } from "react";
-import { Link } from "@tanstack/react-router";
 import { Atmosphere } from "@/components/atmosphere";
 import { SceneStage } from "@/components/scene-stage";
 import { SiteNav } from "@/components/site-nav";
@@ -20,21 +19,11 @@ export function AppShell({
       <Atmosphere />
       {scene ? <SceneStage name={scene} /> : null}
       <SiteNav />
-      <div className={cn("chamber-page relative z-10 mx-auto max-w-6xl px-7 pb-32 pt-10 md:px-12 md:pb-16 md:pt-14", className)}>
-        {children}
-        <footer className="mt-24 max-w-xl pb-4">
-          <div className="gold-rule w-16" />
-          <p className="mt-4 text-xs tracking-wide text-muted-foreground">
-            Полотно Макоши · Темнояр · 108 нитей
-          </p>
-          <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
-            <Link to="/about" className="hover:text-sand">
-              О колоде
-            </Link>
-            <Link to="/journal" className="hover:text-sand">
-              Дневник
-            </Link>
-          </div>
+      <div className={cn("chamber-page relative z-10 mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col px-7 pb-32 pt-10 md:px-12 md:pb-16 md:pt-14", className)}>
+        <div className="flex-1">{children}</div>
+        <footer className="mt-20 max-w-xl pb-2">
+          <div className="gold-rule w-10" />
+          <p className="mt-3 text-[11px] text-muted-foreground">Темнояр · 108 нитей</p>
         </footer>
       </div>
     </div>

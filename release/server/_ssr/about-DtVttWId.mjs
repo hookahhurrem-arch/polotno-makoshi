@@ -1,8 +1,8 @@
 import { S as require_jsx_runtime, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as DECK_ABOUT, r as DECK_WELCOME, t as AUTHOR_IMAGE, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-DVIIYE3U.mjs";
+import { t as AppShell } from "./app-shell-BSyGZXbT.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/about-B9gYkK0T.js
+//#region node_modules/.nitro/vite/services/ssr/assets/about-DtVttWId.js
 var import_jsx_runtime = require_jsx_runtime();
 function AboutPage() {
 	const settings = useOracleStore((s) => s.settings);

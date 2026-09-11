@@ -2,7 +2,7 @@ import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime, f as useRouterState, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { S as stopCrackle, b as soundEnabled, c as IconHasp, f as IconSpindle, h as cn, i as IconBookClasp, l as IconHearth, m as IconWindow, p as IconThreadKnot, w as useOracleStore, x as startCrackle, y as setSoundEnabled } from "./store-okPazmL_.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-DVIIYE3U.js
+//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-BSyGZXbT.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function fxTier() {
@@ -221,7 +221,10 @@ function SiteNav() {
 					"aria-pressed": sound,
 					"aria-label": sound ? "Выключить звук" : "Включить звук",
 					title: sound ? "Звук включён" : "Звук выключен",
-					children: sound ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconHearth, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconSpindle, {})
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+						className: cn("sound-mark", sound && "is-on"),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconHearth, {})
+					})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 					className: "hidden items-center gap-1 md:flex",
 					children: ITEMS.map((item) => {
@@ -262,28 +265,16 @@ function AppShell({ children, className, scene }) {
 			scene ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SceneStage, { name: scene }) : null,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteNav, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: cn("chamber-page relative z-10 mx-auto max-w-6xl px-7 pb-32 pt-10 md:px-12 md:pb-16 md:pt-14", className),
-				children: [children, /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
-					className: "mt-24 max-w-xl pb-4",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule w-16" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-							className: "mt-4 text-xs tracking-wide text-muted-foreground",
-							children: "Полотно Макоши · Темнояр · 108 нитей"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-								to: "/about",
-								className: "hover:text-sand",
-								children: "О колоде"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-								to: "/journal",
-								className: "hover:text-sand",
-								children: "Дневник"
-							})]
-						})
-					]
+				className: cn("chamber-page relative z-10 mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col px-7 pb-32 pt-10 md:px-12 md:pb-16 md:pt-14", className),
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "flex-1",
+					children
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("footer", {
+					className: "mt-20 max-w-xl pb-2",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule w-10" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-3 text-[11px] text-muted-foreground",
+						children: "Темнояр · 108 нитей"
+					})]
 				})]
 			})
 		]
