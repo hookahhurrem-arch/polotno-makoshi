@@ -1,0 +1,11 @@
+node_modules
+.output
+.vercel
+.nitro
+.git
+artifacts
+attachments
+screenshots
+.env
+.env.*
+*.log
