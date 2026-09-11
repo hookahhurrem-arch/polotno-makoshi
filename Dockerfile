@@ -9,9 +9,11 @@ COPY . .
 
 ENV NODE_ENV=production
 ENV NITRO_PRESET=node-server
+ENV HOST=0.0.0.0
 ENV PORT=80
 
-RUN npm run build:amvera
+RUN npm run build:amvera \
+  && test -f /app/.output/server/index.mjs
 
 EXPOSE 80
-CMD ["node", ".output/server/index.mjs"]
+CMD ["node", "/app/.output/server/index.mjs"]
