@@ -49,7 +49,7 @@ function DeckPage() {
   }, [cards, filter, query]);
 
   return (
-    <AppShell>
+    <AppShell scene="book">
       <div className="flex flex-col gap-8">
         <header className="max-w-xl">
           <p className="overline">Сто восемь нитей</p>

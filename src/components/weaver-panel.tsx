@@ -152,7 +152,13 @@ export function WeaverPanel({ question, cards, roles, spread, onWoven, autoStart
         )}
       </div>
 
-      {busy ? <YarnStitch label="Челнок ходит. Полотно нарастает." /> : null}
+      {busy ? (
+        <div className="weaver-loom mt-6">
+          <img src="/scenes/loom-close.webp" alt="" className="weaver-loom-bg" />
+          <img src="/scenes/shuttle.webp" alt="" className="weaver-shuttle" />
+          <YarnStitch label="Челнок ходит. Полотно нарастает." />
+        </div>
+      ) : null}
 
       {silent && !busy ? (
         <Button type="button" className="mt-5" onClick={() => void run(undefined, true)}>

@@ -4,7 +4,6 @@ import { Button } from "@/components/ui/button";
 import { DECK_ABOUT, DECK_WELCOME } from "@/lib/oracle/deck-data";
 import { AUTHOR_IMAGE } from "@/lib/oracle/seed";
 import { useOracleStore } from "@/lib/oracle/store";
-import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/about")({ component: AboutPage });
 
@@ -13,7 +12,7 @@ function AboutPage() {
   const aboutBlocks = DECK_ABOUT.split("\n\n");
 
   return (
-    <AppShell>
+    <AppShell scene="wall">
       <article className="max-w-xl">
         <p className="overline">О Полотне</p>
         <h1 className="display-title mt-4 text-[2.8rem] sm:text-6xl">О Полотне</h1>
@@ -23,7 +22,7 @@ function AboutPage() {
         {aboutBlocks.map((para, i) => (
           <div key={para.slice(0, 24)}>
             {i > 0 ? <div className="gold-split" /> : null}
-            <p className={cn("mt-0 text-base leading-[1.65]", i === 0 && "drop-cap")}>{para}</p>
+            <p className="mt-0 text-base leading-[1.65]">{para}</p>
           </div>
         ))}
 
@@ -37,12 +36,9 @@ function AboutPage() {
           <p className="overline">Автор</p>
           <h2 className="mt-3 font-display text-4xl tracking-[0.1em] text-sand">Темнояр</h2>
           <div className="gold-rule mt-4 w-16" />
-          <div className="gramota mt-8 overflow-hidden">
-            <img
-              src={AUTHOR_IMAGE}
-              alt="Темнояр — Дмитрий"
-              className="aspect-[2/3] w-full max-w-sm object-cover object-[center_20%]"
-            />
+          <div className="author-frame mt-8">
+            <img src={AUTHOR_IMAGE} alt="Темнояр — Дмитрий" className="author-photo" />
+            <img src="/scenes/frame.webp" alt="" className="author-carved" />
           </div>
           <p className="drop-cap mt-8 text-base leading-[1.65]">
             Колоду издаёт Дмитрий. Ведёт её и блог как Темнояр.

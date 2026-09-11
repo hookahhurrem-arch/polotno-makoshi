@@ -732,13 +732,213 @@
   }
 }
 
-.btn-carmine {
-  background: #6d1414;
-  color: #e4d4b8;
+.scene-stage {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  overflow: hidden;
 }
 
-.btn-carmine:hover {
-  background: #8e1c1c;
+.scene-bg-inner {
+  position: absolute;
+  inset: -6%;
+  will-change: transform;
+}
+
+.scene-photo,
+.scene-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.scene-video {
+  opacity: 0.72;
+  mix-blend-mode: lighten;
+}
+
+.scene-dust {
+  position: absolute;
+  inset: -10%;
+  background: url("/scenes/dust.webp") center / cover no-repeat;
+  mix-blend-mode: screen;
+  opacity: 0.28;
+  will-change: transform;
+}
+
+.spindle-hit {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 2.5rem;
+  width: min(100%, 16rem);
+  text-decoration: none;
+}
+
+.spindle-glow {
+  position: absolute;
+  inset: 12% 8%;
+  background: radial-gradient(circle, rgb(142 28 28 / 0.35), transparent 68%);
+  animation: hearth-breathe 3.6s ease-in-out infinite;
+}
+
+.spindle-img {
+  position: relative;
+  width: 11rem;
+  height: 11rem;
+  object-fit: contain;
+  filter: drop-shadow(0 18px 24px rgb(0 0 0 / 0.55));
+}
+
+.spindle-label {
+  position: relative;
+  margin-top: 0.35rem;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  color: var(--color-sand);
+}
+
+.rushnyk-bed {
+  position: relative;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.rushnyk-cloth {
+  pointer-events: none;
+  position: absolute;
+  inset: -8% -6%;
+  width: 112%;
+  height: 116%;
+  object-fit: cover;
+  opacity: 0.55;
+  mix-blend-mode: lighten;
+}
+
+.spread-row {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  gap: 0.9rem;
+  padding: 0.7rem 0;
+  text-align: left;
+  color: var(--color-muted-foreground);
+}
+
+.spread-row.is-on {
+  color: var(--color-sand);
+}
+
+.spread-row.is-on .spread-prop {
+  transform: translateY(-6px) scale(1.06);
+  filter: brightness(1.15) drop-shadow(0 0 18px rgb(180 90 42 / 0.45));
+}
+
+.spread-prop {
+  width: 3.4rem;
+  height: 3.4rem;
+  flex-shrink: 0;
+  object-fit: contain;
+  transition: transform 280ms var(--ease-smooth-out), filter 280ms var(--ease-thread);
+}
+
+.btn-cloth {
+  display: inline-flex;
+  min-height: 3rem;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+  padding: 0 1.25rem;
+  border: 1px solid #6d1414;
+  background:
+    linear-gradient(#3a1414, #1d0c0c);
+  box-shadow: inset 0 0 0 4px rgb(142 28 28 / 0.18);
+  color: var(--color-sand);
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+}
+
+.author-frame {
+  position: relative;
+  width: min(100%, 20rem);
+  aspect-ratio: 2 / 3;
+}
+
+.author-photo {
+  position: absolute;
+  inset: 11% 13% 14%;
+  object-fit: cover;
+  object-position: center 18%;
+}
+
+.author-carved {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: fill;
+  pointer-events: none;
+}
+
+.weaver-loom {
+  position: relative;
+  overflow: hidden;
+  min-height: 11rem;
+  padding: 1rem 0 0.5rem;
+}
+
+.weaver-loom-bg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.55;
+}
+
+.weaver-shuttle {
+  position: absolute;
+  top: 38%;
+  width: 5.5rem;
+  height: 2.2rem;
+  object-fit: contain;
+  animation: shuttle-run 2.4s var(--ease-thread) infinite;
+}
+
+@keyframes shuttle-run {
+  0% {
+    left: 8%;
+    transform: scaleX(1);
+  }
+  49% {
+    left: 72%;
+    transform: scaleX(1);
+  }
+  50% {
+    left: 72%;
+    transform: scaleX(-1);
+  }
+  100% {
+    left: 8%;
+    transform: scaleX(-1);
+  }
+}
+
+.knot-entry {
+  position: relative;
+  padding-left: 4.5rem;
+}
+
+.knot-prop {
+  position: absolute;
+  left: -0.4rem;
+  top: 0;
+  width: 4.2rem;
+  height: 4.2rem;
+  object-fit: contain;
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -759,7 +959,11 @@
   .yarn-knot,
   .chamber-page,
   .chamber-lamp,
-  .chamber-dust {
+  .chamber-dust,
+  .spindle-glow,
+  .weaver-shuttle,
+  .scene-dust,
+  .scene-bg-inner {
     animation: none !important;
     transition: none !important;
   }

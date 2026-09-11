@@ -194,7 +194,7 @@ export function ThreadOfDay() {
 
   return (
     <section className="relative isolate z-10 mt-20 p-6 sm:p-8 gramota">
-      <p className="overline">Нить дня</p>
+      <p className="font-display text-xl text-sand">Нить дня</p>
       <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-sand sm:text-4xl">Одна карта на сутки</h2>
       <div className="gold-rule mt-4 w-16" />
       <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">

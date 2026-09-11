@@ -39,7 +39,7 @@ function JournalPage() {
   }, [entries, query]);
 
   return (
-    <AppShell>
+    <AppShell scene="casket">
       <header className="max-w-xl">
         <p className="overline">Прошлые нити</p>
         <h1 className="display-title mt-4 text-[2.8rem] tracking-[0.12em] sm:text-6xl">Архив Полотна</h1>
@@ -70,7 +70,8 @@ function JournalPage() {
       ) : (
         <ul className="mt-16 max-w-xl space-y-16">
           {visible.map((entry) => (
-            <li key={entry.id} className="gramota p-6">
+            <li key={entry.id} className="knot-entry">
+              <img src="/scenes/knot.webp" alt="" className="knot-prop" />
               <div className="flex items-start justify-between gap-3">
                 <div>
                   <p className="overline">{formatDate(entry.createdAt, entry.kind === "day")}</p>

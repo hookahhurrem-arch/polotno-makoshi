@@ -1,6 +1,6 @@
 import { useState } from "react";
-import { IconThreadKnot } from "@/components/brand-icons";
-import { SPREADS, type SpreadDef } from "@/lib/oracle/spreads";
+import { SPREADS } from "@/lib/oracle/spreads";
+import { SPREAD_PROP } from "@/lib/scenes";
 import { cn } from "@/lib/utils";
 
 function countLabel(n: number): string {
@@ -9,21 +9,6 @@ function countLabel(n: number): string {
   if (ten === 1 && hundred !== 11) return `${n} карта`;
   if (ten >= 2 && ten <= 4 && (hundred < 12 || hundred > 14)) return `${n} карты`;
   return `${n} карт`;
-}
-
-function Silhouette({ spread }: { spread: SpreadDef }) {
-  const cols = spread.count === 1 ? 1 : spread.count === 4 ? 2 : 3;
-  return (
-    <div
-      className="grid shrink-0 gap-[3px]"
-      style={{ gridTemplateColumns: `repeat(${cols}, 7px)` }}
-      aria-hidden="true"
-    >
-      {spread.roles.map((role) => (
-        <span key={role} className="h-2.5 w-[7px] bg-current opacity-70" />
-      ))}
-    </div>
-  );
 }
 
 type SpreadFormProps = {
@@ -52,9 +37,10 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
         />
       </label>
 
-      <div className="mt-8" role="radiogroup" aria-label="Расклад">
-        <p className="overline">Расклад</p>
-        <ul className="mt-4 divide-y divide-[#2a211e]">
+      <div className="rushnyk-bed mt-8" role="radiogroup" aria-label="Расклад">
+        <img src="/scenes/rushnyk.webp" alt="" className="rushnyk-cloth" />
+        <p className="relative z-10 font-display text-xl text-sand">Расклад</p>
+        <ul className="relative z-10 mt-4">
           {SPREADS.map((spread) => {
             const on = picked === spread.id;
             return (
@@ -63,35 +49,23 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
                   type="button"
                   onClick={() => setPicked(spread.id)}
                   aria-pressed={on}
-                  className={cn(
-                    "stitch-run flex w-full items-center gap-4 py-3 text-left",
-                    on ? "text-sand" : "text-muted-foreground",
-                  )}
-                  data-active={on}
+                  className={cn("spread-row", on && "is-on")}
                 >
-                  <Silhouette spread={spread} />
+                  <img src={SPREAD_PROP[spread.id]} alt="" className="spread-prop" />
                   <span className="min-w-0 flex-1">
                     <span className="block font-display text-xl leading-tight">{spread.title}</span>
                     <span className="mt-1 block text-sm">{spread.hint}</span>
                   </span>
-                  <span className="shrink-0 font-[family-name:var(--font-ui)] text-[11px] tracking-[0.16em] uppercase">
-                    {countLabel(spread.count)}
-                  </span>
+                  <span className="shrink-0 text-[11px] text-muted-foreground">{countLabel(spread.count)}</span>
                 </button>
               </li>
             );
           })}
         </ul>
-        <p className="mt-4 text-[11px] tracking-[0.16em] text-muted-foreground uppercase">
-          {active.roles.join(" · ")}
-        </p>
+        <p className="relative z-10 mt-4 text-sm text-muted-foreground">{active.roles.join(" · ")}</p>
       </div>
 
-      <button
-        type="submit"
-        className="btn-carmine sticky bottom-[calc(4.6rem+env(safe-area-inset-bottom))] z-20 mt-8 inline-flex h-12 w-full items-center justify-center gap-2 text-sm md:static md:bottom-auto"
-      >
-        <IconThreadKnot />
+      <button type="submit" className="btn-cloth sticky bottom-[calc(4.6rem+env(safe-area-inset-bottom))] z-20 mt-8">
         Сплести нити
       </button>
     </form>
