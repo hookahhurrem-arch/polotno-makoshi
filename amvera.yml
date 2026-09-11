@@ -6,12 +6,13 @@ meta:
 
 build:
   skip: false
-  additionalCommands: npm run build:amvera
+  additionalCommands: test -f release/server/index.mjs
   artifacts:
     "*": /
-    ".*": /
-    ".output": /
+    "release": /
+    "index.js": /
+    "package.json": /
 
 run:
-  command: node .output/server/index.mjs
+  scriptName: index.js
   containerPort: 80
