@@ -1,0 +1,17 @@
+node_modules
+.output
+.vercel
+.nitro
+dist
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+artifacts
+attachments
+screenshots
+.DS_Store
+*.log
+data
+.pglite
