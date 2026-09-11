@@ -4,19 +4,18 @@ import { IconScissors } from "@/components/brand-icons";
 import { AppShell } from "@/components/app-shell";
 import { CardTile } from "@/components/card-tile";
 import { Input } from "@/components/ui/input";
-import { isCardFilled } from "@/lib/oracle/types";
+import { threadTone } from "@/lib/oracle/polarity";
 import { useOracleStore } from "@/lib/oracle/store";
 import { cn } from "@/lib/utils";
 
 export const Route = createFileRoute("/deck")({ component: DeckPage });
 
-type Filter = "all" | "filled" | "empty";
+type Filter = "all" | "light" | "dark";
 
 function DeckPage() {
   const cards = useOracleStore((s) => s.cards);
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState<Filter>("all");
-  const filledCount = cards.filter(isCardFilled).length;
 
   useEffect(() => {
     const fromHash = window.location.hash.replace("#", "");
@@ -37,9 +36,9 @@ function DeckPage() {
   const visible = useMemo(() => {
     const q = query.trim().toLowerCase();
     return cards.filter((card) => {
-      const filled = isCardFilled(card);
-      if (filter === "filled" && !filled) return false;
-      if (filter === "empty" && filled) return false;
+      const tone = threadTone(card);
+      if (filter === "light" && tone !== "light") return false;
+      if (filter === "dark" && tone !== "dark") return false;
       if (!q) return true;
       return (
         card.title.toLowerCase().includes(q) ||
@@ -53,7 +52,7 @@ function DeckPage() {
     <AppShell>
       <div className="flex flex-col gap-8">
         <header className="max-w-xl">
-          <p className="overline">{filledCount} из 108</p>
+          <p className="overline">Сто восемь нитей</p>
           <h1 className="display-title mt-4 text-[2.8rem] tracking-[0.12em] sm:text-6xl">Гримуар</h1>
           <div className="gold-rule mt-5 w-20" />
           <p className="mt-5 text-sm leading-[1.6] text-muted-foreground">
@@ -72,8 +71,8 @@ function DeckPage() {
             {(
               [
                 ["all", "Все"],
-                ["filled", "Вплетены"],
-                ["empty", "Пустые"],
+                ["light", "Светлые нити"],
+                ["dark", "Тёмные нити"],
               ] as const
             ).map(([id, label]) => (
               <button

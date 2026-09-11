@@ -1,6 +1,6 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { useEffect, useState } from "react";
-import { IconCutBack, IconCutForward, IconKey } from "@/components/brand-icons";
+import { IconCutBack, IconCutForward } from "@/components/brand-icons";
 import { AppShell } from "@/components/app-shell";
 import { CardSwipe } from "@/components/card-swipe";
 import { LivingMedia } from "@/components/living-media";
@@ -113,16 +113,10 @@ function CardPage() {
               <p className="mt-6 whitespace-pre-line text-base leading-relaxed">{card.description}</p>
             ) : (
               <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
-                Эта карта ещё ждёт своего текста. Откройте студию и вплетите её в полотно.
+                Эта нить ещё молчит. Текст придёт, когда Пряха вплетёт её в полотно.
               </p>
             )}
             <div className="mt-10 flex flex-wrap gap-2">
-              <Button asChild>
-                <Link to="/studio/$number" params={{ number: String(n) }}>
-                  <IconKey />
-                  Редактировать
-                </Link>
-              </Button>
               <Button asChild variant="outline">
                 <Link to="/deck" hash={`card-${n}`}>
                   К книге

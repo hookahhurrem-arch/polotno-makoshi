@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { IconThreadKnot } from "@/components/brand-icons";
+import { YarnStitch } from "@/components/yarn-stitch";
 import { Button } from "@/components/ui/button";
 import { SILENT_FALLBACK, weaveReading, type WeaveCard, type WeaveTurn } from "@/lib/oracle/weaver";
 import { cardDisplayTitle, type OracleCard, type SpreadKind } from "@/lib/oracle/types";
@@ -152,12 +152,7 @@ export function WeaverPanel({ question, cards, roles, spread, onWoven, autoStart
         )}
       </div>
 
-      {busy ? (
-        <p className="mt-5 flex items-center gap-2 text-sm text-muted-foreground">
-          <IconThreadKnot className="text-primary" />
-          Нить тянется…
-        </p>
-      ) : null}
+      {busy ? <YarnStitch label="Челнок ходит. Полотно нарастает." /> : null}
 
       {silent && !busy ? (
         <Button type="button" className="mt-5" onClick={() => void run(undefined, true)}>

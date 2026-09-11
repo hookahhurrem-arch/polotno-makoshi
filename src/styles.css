@@ -603,6 +603,144 @@
   }
 }
 
+.chamber-layers {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+}
+
+.chamber-video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(18px) brightness(0.28) saturate(0.7);
+  opacity: 0.45;
+}
+
+.hearth-breathe {
+  animation: hearth-breathe 7.4s ease-in-out infinite;
+}
+
+@keyframes hearth-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  45% {
+    opacity: 1;
+  }
+}
+
+.chamber-lamp {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    220px 220px at var(--lamp-x, 50%) var(--lamp-y, 30%),
+    rgb(180 90 42 / 0.12),
+    transparent 70%
+  );
+  mix-blend-mode: screen;
+}
+
+.chamber-dust {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.threshold {
+  position: fixed;
+  inset: 0;
+  z-index: 80;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #050403;
+}
+
+.threshold-veil {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 42%, rgb(142 28 28 / 0.16), transparent 42%),
+    linear-gradient(90deg, #050403 0 18%, transparent 38% 62%, #050403 82% 100%);
+}
+
+.chamber-page {
+  animation: chamber-enter 720ms var(--ease-smooth-out) both;
+}
+
+@keyframes chamber-enter {
+  from {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    filter: none;
+    transform: none;
+  }
+}
+
+.yarn-stitch {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: #8e1c1c;
+}
+
+.yarn-stitch-svg {
+  width: 48px;
+  height: 54px;
+}
+
+.yarn-path {
+  stroke-dasharray: 180;
+  stroke-dashoffset: 180;
+  animation: yarn-sew 2.8s var(--ease-thread) infinite;
+}
+
+.yarn-knot {
+  transform-origin: 32px 8px;
+  animation: yarn-knot 2.8s ease-in-out infinite;
+}
+
+@keyframes yarn-sew {
+  0% {
+    stroke-dashoffset: 180;
+  }
+  55%,
+  100% {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes yarn-knot {
+  0%,
+  40% {
+    opacity: 0.2;
+  }
+  70%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.btn-carmine {
+  background: #6d1414;
+  color: #e4d4b8;
+}
+
+.btn-carmine:hover {
+  background: #8e1c1c;
+}
+
 @media (prefers-reduced-motion: reduce) {
   .cloth-warp,
   .cloth-weft,
@@ -615,9 +753,19 @@
   .weft-run,
   .weaver-para,
   .gold-rule,
-  .knot-flash {
+  .knot-flash,
+  .hearth-breathe,
+  .yarn-path,
+  .yarn-knot,
+  .chamber-page,
+  .chamber-lamp,
+  .chamber-dust {
     animation: none !important;
     transition: none !important;
+  }
+
+  .chamber-video {
+    display: none;
   }
 }
 

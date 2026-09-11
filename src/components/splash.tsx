@@ -1,49 +1,75 @@
 import { useEffect, useState } from "react";
 import { CardBack } from "@/components/card-back";
+import { setSoundEnabled, startCrackle } from "@/lib/oracle/sound";
 
-const KEY = "makosh-splash";
+const KEY = "makosh-threshold";
 
 export function Splash() {
-  const [phase, setPhase] = useState<"show" | "leave" | "done">("show");
+  const [phase, setPhase] = useState<"full" | "short" | "leave" | "done">("full");
 
   useEffect(() => {
     try {
       if (window.sessionStorage.getItem(KEY) === "1") {
-        setPhase("done");
-        return;
+        setPhase("short");
+        const t = window.setTimeout(() => setPhase("done"), 900);
+        return () => window.clearTimeout(t);
       }
     } catch {
       /* ignore */
     }
-    const title = window.setTimeout(() => {
-      try {
-        window.sessionStorage.setItem(KEY, "1");
-      } catch {
-        /* ignore */
-      }
-    }, 400);
-    const leave = window.setTimeout(() => setPhase("leave"), 900);
-    const done = window.setTimeout(() => setPhase("done"), 1400);
-    return () => {
-      window.clearTimeout(title);
-      window.clearTimeout(leave);
-      window.clearTimeout(done);
-    };
+    return undefined;
   }, []);
+
+  const enter = (withSound: boolean) => {
+    setSoundEnabled(withSound);
+    if (withSound) void startCrackle();
+    try {
+      window.sessionStorage.setItem(KEY, "1");
+    } catch {
+      /* ignore */
+    }
+    setPhase("leave");
+    window.setTimeout(() => setPhase("done"), 900);
+  };
 
   if (phase === "done") return null;
 
+  const short = phase === "short";
+
   return (
     <div
-      className={`fixed inset-0 z-[80] flex flex-col items-center justify-center bg-[#0b0908] ${phase === "leave" ? "splash-leave" : ""}`}
+      className={`threshold ${phase === "leave" ? "splash-leave" : ""}`}
+      role="dialog"
+      aria-label="Порог горницы"
     >
-      <div className="relative flex size-40 items-center justify-center">
-        <div className="splash-glow absolute size-52" />
-        <div className="relative size-36 overflow-hidden">
-          <CardBack className="size-full" />
+      <div className="threshold-veil" />
+      <div className="relative z-10 flex flex-col items-center px-8 text-center">
+        <div className="relative flex size-36 items-center justify-center">
+          <div className="splash-glow absolute size-48" />
+          <div className="relative size-28 overflow-hidden">
+            <CardBack className="size-full" />
+          </div>
         </div>
+        <p className="overline relative mt-8">Порог</p>
+        <h1 className="mt-3 font-display text-4xl tracking-[0.14em] text-sand">Горница Пряхи</h1>
+        <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
+          {short ? "Свет ещё держится." : "За занавесью ткётся полотно. Войдите со звуком или в тишине."}
+        </p>
+        {short ? null : (
+          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <button type="button" className="btn-carmine min-h-12 px-6" onClick={() => enter(true)}>
+              Войти со звуком
+            </button>
+            <button
+              type="button"
+              className="min-h-12 border border-[#2a211e] px-6 text-sm text-sand"
+              onClick={() => enter(false)}
+            >
+              Войти в тишине
+            </button>
+          </div>
+        )}
       </div>
-      <p className="overline relative mt-8">Темнояр</p>
     </div>
   );
 }

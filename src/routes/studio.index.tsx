@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { toast } from "sonner";
 import { IconRoot } from "@/components/brand-icons";
 import { AppShell } from "@/components/app-shell";
+import { StudioGate } from "@/components/studio-gate";
 import { CardTile } from "@/components/card-tile";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -13,6 +14,14 @@ import { useOracleStore } from "@/lib/oracle/store";
 export const Route = createFileRoute("/studio/")({ component: StudioPage });
 
 function StudioPage() {
+  return (
+    <StudioGate>
+      <StudioInner />
+    </StudioGate>
+  );
+}
+
+function StudioInner() {
   const cards = useOracleStore((s) => s.cards);
   const settings = useOracleStore((s) => s.settings);
   const updateSettings = useOracleStore((s) => s.updateSettings);

@@ -3,7 +3,6 @@ import { AppShell } from "@/components/app-shell";
 import { Button } from "@/components/ui/button";
 import { DECK_ABOUT, DECK_WELCOME } from "@/lib/oracle/deck-data";
 import { AUTHOR_IMAGE } from "@/lib/oracle/seed";
-import { isCardFilled } from "@/lib/oracle/types";
 import { useOracleStore } from "@/lib/oracle/store";
 import { cn } from "@/lib/utils";
 
@@ -11,8 +10,6 @@ export const Route = createFileRoute("/about")({ component: AboutPage });
 
 function AboutPage() {
   const settings = useOracleStore((s) => s.settings);
-  const cards = useOracleStore((s) => s.cards);
-  const filled = cards.filter(isCardFilled).length;
   const aboutBlocks = DECK_ABOUT.split("\n\n");
 
   return (
@@ -33,8 +30,7 @@ function AboutPage() {
         <div className="gold-split" />
 
         <p className="text-sm leading-[1.6] text-muted-foreground">
-          Сто восемь карт. Вплетено {filled} из 108. Ткач читает ядро карт и плетёт один сюжет под вопрос — одна нить,
-          узел, чужая нитка, две нити или кросна.
+          Ткач читает ядро карт и плетёт один сюжет под вопрос — одна нить, узел, чужая нитка, две нити или кросна.
         </p>
 
         <section className="mt-16">

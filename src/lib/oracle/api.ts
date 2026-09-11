@@ -1,6 +1,7 @@
 import { createServerFn } from "@tanstack/react-start";
 import { z } from "zod";
 import { getSql } from "@/lib/db";
+import { requireStudio } from "./studio-auth.server";
 import {
   DECK_SIZE,
   DEFAULT_SETTINGS,
@@ -156,6 +157,7 @@ const settingsSchema = z.object({
 export const saveOracleCard = createServerFn({ method: "POST" })
   .validator((input: unknown) => cardSchema.parse(input))
   .handler(async ({ data }) => {
+    await requireStudio();
     const sql = await getSql();
     await sql`
       insert into oracle_cards (
@@ -193,6 +195,7 @@ export const saveOracleCard = createServerFn({ method: "POST" })
 export const saveOracleSettings = createServerFn({ method: "POST" })
   .validator((input: unknown) => settingsSchema.parse(input))
   .handler(async ({ data }) => {
+    await requireStudio();
     const sql = await getSql();
     await sql`
       insert into deck_settings (id, name, author, tagline, intro, seeded, updated_at)
@@ -224,6 +227,7 @@ const bulkSchema = z.object({
 export const saveOracleBulk = createServerFn({ method: "POST" })
   .validator((input: unknown) => bulkSchema.parse(input))
   .handler(async ({ data }) => {
+    await requireStudio();
     const sql = await getSql();
     await sql`
       insert into deck_settings (id, name, author, tagline, intro, seeded, updated_at)

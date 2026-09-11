@@ -9,7 +9,7 @@ export function AppShell({ children, className }: { children: ReactNode; classNa
     <div className="relative z-10 min-h-dvh text-foreground">
       <Atmosphere />
       <SiteNav />
-      <div className={cn("relative z-10 mx-auto max-w-6xl px-7 pb-32 pt-10 md:px-12 md:pb-16 md:pt-14", className)}>
+      <div className={cn("chamber-page relative z-10 mx-auto max-w-6xl px-7 pb-32 pt-10 md:px-12 md:pb-16 md:pt-14", className)}>
         {children}
         <footer className="mt-24 max-w-xl pb-4">
           <div className="gold-rule w-16" />
@@ -19,9 +19,6 @@ export function AppShell({ children, className }: { children: ReactNode; classNa
           <div className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-xs text-muted-foreground">
             <Link to="/about" className="hover:text-sand">
               О колоде
-            </Link>
-            <Link to="/studio" className="hover:text-sand">
-              Студия
             </Link>
             <Link to="/journal" className="hover:text-sand">
               Дневник

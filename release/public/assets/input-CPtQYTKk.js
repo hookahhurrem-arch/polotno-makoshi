@@ -1,1 +1,0 @@
-import{B as e,k as t}from"./sound-2_BW4P_7.js";var n=e();function r({className:e,type:r,...i}){return(0,n.jsx)(`input`,{type:r,className:t(`field-ink flex h-12 w-full px-4 text-sm text-foreground placeholder:text-muted-foreground disabled:cursor-not-allowed disabled:opacity-50`,e),...i})}export{r as t};

@@ -3,6 +3,7 @@ import { IconCutBack, IconDrop } from "@/components/brand-icons";
 import { useEffect, useRef, useState } from "react";
 import { toast } from "sonner";
 import { AppShell } from "@/components/app-shell";
+import { StudioGate } from "@/components/studio-gate";
 import { LivingMedia } from "@/components/living-media";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
@@ -28,6 +29,14 @@ export const Route = createFileRoute("/studio/$number")({
 });
 
 function StudioCardPage() {
+  return (
+    <StudioGate>
+      <StudioCardInner />
+    </StudioGate>
+  );
+}
+
+function StudioCardInner() {
   const { number: raw } = Route.useParams();
   const n = Number(raw);
   if (!Number.isInteger(n) || n < 1 || n > DECK_SIZE) throw notFound();

@@ -3,6 +3,7 @@ import { Link, useRouterState } from "@tanstack/react-router";
 import {
   IconBookClasp,
   IconCutBack,
+  IconHasp,
   IconHearth,
   IconSpindle,
   IconThreadKnot,
@@ -17,6 +18,7 @@ const ITEMS = [
   { to: "/", label: "Главная", icon: IconWindow },
   { to: "/reading", label: "Расклад", icon: IconThreadKnot },
   { to: "/deck", label: "Гримуар", icon: IconBookClasp },
+  { to: "/journal", label: "Дневник", icon: IconHasp },
   { to: "/about", label: "О Полотне", icon: IconSpindle },
 ] as const;
 
@@ -82,7 +84,7 @@ export function SiteNav() {
       </header>
 
       <nav className="site-dock fixed inset-x-0 bottom-0 z-30 border-t border-[#2a211e] pb-[env(safe-area-inset-bottom)] md:hidden">
-        <ul className="grid grid-cols-4">
+        <ul className="grid grid-cols-5">
           {ITEMS.map((item) => {
             const active =
               item.to === "/"

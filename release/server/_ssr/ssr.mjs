@@ -1,20 +1,32 @@
-import { r as __exportAll } from "../_runtime.mjs";
+import { r as __exportAll$1 } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { A as resolveManifestCssLink, B as rootRouteId, D as getScriptPreloadAttrs, I as isRedirect, L as isResolvedRedirect, M as executeRewriteInput, N as invariant, O as getStylesheetHref, R as parseRedirect, S as require_jsx_runtime, V as isNotFound, a as isSsrResponse, c as stripSsrResponseBody, i as disposeSsrResponseDetached, j as _getRenderedMatches, k as resolveManifestAssetLink, n as bindSsrResponseToRequest, o as normalizeSsrResponse, p as RouterProvider, r as defineHandlerCallback, s as replaceSsrResponse, t as renderRouterToStream } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as createMemoryHistory } from "../_libs/tanstack__history.mjs";
 import { a as getOrigin, c as createSerializationAdapter, d as toCrossJSONAsync, f as toCrossJSONStream, i as getNormalizedURL, l as makeSerovalPlugin, n as mergeHeaders, o as defaultSerovalPlugins, r as attachRouterServerSsrUtils, s as createRawStreamRPCPlugin, t as waitForRequest, u as fromJSON } from "../_libs/@tanstack/router-core+[...].mjs";
-import { n as toResponse, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
+import { i as toResponse, n as parseCookies, r as setCookie, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
 import { AsyncLocalStorage } from "node:async_hooks";
 //#region node_modules/.nitro/vite/services/ssr/index.js
-var ssr_exports = /* @__PURE__ */ __exportAll({
+var ssr_exports = /* @__PURE__ */ __exportAll$1({
+	a: () => __exportAll,
 	createServerEntry: () => createServerEntry,
 	default: () => server_default,
-	n: () => TSS_SERVER_FUNCTION,
-	r: () => getServerFnById,
-	t: () => createServerFn
+	i: () => getServerFnById,
+	n: () => createServerFn,
+	r: () => TSS_SERVER_FUNCTION,
+	t: () => server_exports
 });
 require_react();
 var import_jsx_runtime = require_jsx_runtime();
+var __defProp = Object.defineProperty;
+var __exportAll = (all, no_symbols) => {
+	let target = {};
+	for (var name in all) __defProp(target, name, {
+		get: all[name],
+		enumerable: true
+	});
+	if (!no_symbols) __defProp(target, Symbol.toStringTag, { value: "Module" });
+	return target;
+};
 function StartServer(props) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(RouterProvider, { router: props.router });
 }
@@ -74,6 +86,42 @@ function getH3Event() {
 	if (!event) throw new Error(`No StartEvent found in AsyncLocalStorage. Make sure you are using the function within the server runtime.`);
 	return event.h3Event;
 }
+/**
+* Parse the request to get HTTP Cookie header string and return an object of all cookie name-value pairs.
+* @returns Object of cookie name-value pairs
+* ```ts
+* const cookies = getCookies()
+* ```
+*/
+function getCookies() {
+	const cookies = parseCookies(getH3Event());
+	const definedCookies = Object.create(null);
+	for (const [name, value] of Object.entries(cookies)) if (value !== void 0) definedCookies[name] = value;
+	return definedCookies;
+}
+/**
+* Get a cookie value by name.
+* @param name Name of the cookie to get
+* @returns {*} Value of the cookie (String or undefined)
+* ```ts
+* const authorization = getCookie('Authorization')
+* ```
+*/
+function getCookie(name) {
+	return getCookies()[name];
+}
+/**
+* Set a cookie value by name.
+* @param name Name of the cookie to set
+* @param value Value of the cookie to set
+* @param options {CookieSerializeOptions} Options for serializing the cookie
+* ```ts
+* setCookie('Authorization', '1234567')
+* ```
+*/
+function setCookie$1(name, value, options) {
+	setCookie(getH3Event(), name, value, options);
+}
 function getResponse() {
 	return getH3Event().res;
 }
@@ -88,7 +136,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-Bw9bZ7LW.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-Dt93j2dv.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -110,27 +158,35 @@ async function getStartManifest(matchedRoutes) {
 var manifest = {
 	"1dc9218764120d87088736012bb82985ddd14c90927c02739313fd18578f1798": {
 		functionName: "weaveReading_createServerFn_handler",
-		importer: () => import("./weaver-B1jz3Vb4.mjs")
+		importer: () => import("./weaver-Z5Ft3nCj.mjs")
 	},
 	"3c5f31336d46197db53890c5199976876134652da4bce22153d894b512ff7ce3": {
 		functionName: "weaveDayThread_createServerFn_handler",
-		importer: () => import("./day-weaver-Cz5xRwMo.mjs")
+		importer: () => import("./day-weaver-CtYGWo1K.mjs")
+	},
+	"45a8c2c978ea35732119a5a574a54f782114a24d170897a22ea1cf1e1acd1fd4": {
+		functionName: "studioStatus_createServerFn_handler",
+		importer: () => import("./studio-api-DOvJdI-A.mjs")
 	},
 	"5ccf290d7ea0620b7f445a41f58f4c53f1fc8d8288a2007450f3124685e40ecb": {
 		functionName: "saveOracleCard_createServerFn_handler",
-		importer: () => import("./api-DWphElb9.mjs")
+		importer: () => import("./api-DYfxYobI.mjs")
 	},
 	"5d5226869f98383f1aaeb098708a6c6970955bcb7d7e150e97005059f0ec2a13": {
 		functionName: "saveOracleBulk_createServerFn_handler",
-		importer: () => import("./api-DWphElb9.mjs")
+		importer: () => import("./api-DYfxYobI.mjs")
+	},
+	"6f97e1772b0eeea273dec8a8561c60a502e145a8c6603fb5956ea69b783f6165": {
+		functionName: "loginStudio_createServerFn_handler",
+		importer: () => import("./studio-api-DOvJdI-A.mjs")
 	},
 	"98bc9c3983846639a9a378c9bd74e3a0e8457eeae953a5b71cd6c9590da661f7": {
 		functionName: "saveOracleSettings_createServerFn_handler",
-		importer: () => import("./api-DWphElb9.mjs")
+		importer: () => import("./api-DYfxYobI.mjs")
 	},
 	"cfd5decae55058b44b875528811315d769f42d21ae7915a93eedcc4dd80a28e6": {
 		functionName: "fetchOracleState_createServerFn_handler",
-		importer: () => import("./api-DWphElb9.mjs")
+		importer: () => import("./api-DYfxYobI.mjs")
 	}
 };
 async function getServerFnById(id, access) {
@@ -1400,7 +1456,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-B7krle5x.mjs").then((n) => n.t),
+		import("./router-DfOQn3SG.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);
@@ -1838,6 +1894,10 @@ async function handleServerRoutes({ getRouter, request, url, executeRouter, cont
 	}
 	return normalizeSsrResponse(response);
 }
+var server_exports = /* @__PURE__ */ __exportAll({
+	getCookie: () => getCookie,
+	setCookie: () => setCookie$1
+});
 var fetch = createStartHandler(defaultStreamHandler);
 function createServerEntry(entry) {
 	return { async fetch(...args) {
@@ -1846,4 +1906,4 @@ function createServerEntry(entry) {
 }
 var server_default = createServerEntry({ fetch });
 //#endregion
-export { createServerEntry, server_default as default, ssr_exports as i, TSS_SERVER_FUNCTION as n, getServerFnById as r, createServerFn as t };
+export { __exportAll as a, createServerEntry, server_default as default, getServerFnById as i, createServerFn as n, ssr_exports as o, TSS_SERVER_FUNCTION as r, server_exports as t };
