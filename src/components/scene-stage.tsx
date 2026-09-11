@@ -25,7 +25,7 @@ export function SceneStage({ name }: { name: SceneName }) {
   const video = tier === "full" ? SCENE_VIDEO[name] : undefined;
 
   return (
-    <div className="scene-stage" aria-hidden="true">
+    <div className="scene-stage" data-scene={name} aria-hidden="true">
       <div
         className="scene-bg-inner"
         style={{ transform: `translate3d(${shift.x * -10}px, ${shift.y * -7}px, 0) scale(1.1)` }}

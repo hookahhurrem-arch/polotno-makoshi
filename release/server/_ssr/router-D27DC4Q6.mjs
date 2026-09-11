@@ -109,7 +109,7 @@ function spreadTitle(kind, count = 0) {
 	return "Расклад";
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-ChfiDAau.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-D27DC4Q6.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "Что-то пошло не так. Попробуйте обновить страницу.";
@@ -572,7 +572,7 @@ function Providers({ children }) {
 		})
 	] });
 }
-var styles_default = "/assets/styles-CYl2SLdl.css";
+var styles_default = "/assets/styles-B7IECBem.css";
 var APP_NAME = "Полотно Макоши";
 var Route$10 = createRootRoute({
 	head: () => ({
@@ -626,15 +626,15 @@ var Route$10 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$7 = () => import("./routes-BlQ0JPTv.mjs");
+var $$splitComponentImporter$7 = () => import("./routes-DtIOrU8W.mjs");
 var Route$9 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
-var $$splitComponentImporter$6 = () => import("./about-D8kXqBCd.mjs");
+var $$splitComponentImporter$6 = () => import("./about-B9gYkK0T.mjs");
 var Route$8 = createFileRoute("/about")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
-var $$splitComponentImporter$5 = () => import("./deck-gIG_fqGh.mjs");
+var $$splitComponentImporter$5 = () => import("./deck-BPWQl1Kz.mjs");
 var Route$7 = createFileRoute("/deck")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
-var $$splitComponentImporter$4 = () => import("./journal-RY8QJneh.mjs");
+var $$splitComponentImporter$4 = () => import("./journal-BFRO2Iy2.mjs");
 var Route$6 = createFileRoute("/journal")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./reading-DXTaqI4E.mjs");
+var $$splitComponentImporter$3 = () => import("./reading-DZ9w52fE.mjs");
 var Route$5 = createFileRoute("/reading")({
 	validateSearch: (search) => ({
 		s: parseSpreadId(search.s, search.n),
@@ -977,7 +977,7 @@ var Route$3 = createFileRoute("/api/weave")({ server: { handlers: { POST: async 
 		});
 	}
 } } } });
-var $$splitComponentImporter$2 = () => import("./card._number-DeWtRoa1.mjs");
+var $$splitComponentImporter$2 = () => import("./card._number-Bokr8Xbo.mjs");
 var Route$2 = createFileRoute("/card/$number")({
 	beforeLoad: ({ params }) => {
 		const n = Number(params.number);
@@ -985,9 +985,9 @@ var Route$2 = createFileRoute("/card/$number")({
 	},
 	component: lazyRouteComponent($$splitComponentImporter$2, "component")
 });
-var $$splitComponentImporter$1 = () => import("./studio.index-CZBe3cXd.mjs");
+var $$splitComponentImporter$1 = () => import("./studio.index-D82mejPq.mjs");
 var Route$1 = createFileRoute("/studio/")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./studio._number--TfES8E5.mjs");
+var $$splitComponentImporter = () => import("./studio._number-AgcLzsrH.mjs");
 var Route = createFileRoute("/studio/$number")({
 	beforeLoad: ({ params }) => {
 		const n = Number(params.number);

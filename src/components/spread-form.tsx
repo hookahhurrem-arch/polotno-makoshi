@@ -21,7 +21,7 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
   const active = SPREADS.find((s) => s.id === picked) ?? SPREADS[1]!;
 
   return (
-    <form action="/reading" method="get" className="relative z-20 w-full min-w-0 pb-8">
+    <form action="/reading" method="get" className="reading-ink relative z-20 w-full min-w-0 pb-8">
       <input type="hidden" name="go" value="1" />
       <input type="hidden" name="s" value={picked} />
       <label className="block">
@@ -37,10 +37,8 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
         />
       </label>
 
-      <div className="rushnyk-bed mt-8" role="radiogroup" aria-label="Расклад">
-        <img src="/scenes/rushnyk.webp" alt="" className="rushnyk-cloth" />
-        <p className="relative z-10 font-display text-xl text-sand">Расклад</p>
-        <ul className="relative z-10 mt-4">
+      <div className="rushnyk-bed mt-4" role="radiogroup" aria-label="Расклад">
+        <ul>
           {SPREADS.map((spread) => {
             const on = picked === spread.id;
             return (
@@ -53,16 +51,16 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
                 >
                   <img src={SPREAD_PROP[spread.id]} alt="" className="spread-prop" />
                   <span className="min-w-0 flex-1">
-                    <span className="block font-display text-xl leading-tight">{spread.title}</span>
-                    <span className="mt-1 block text-sm">{spread.hint}</span>
+                    <span className="block font-display text-[1.45rem] leading-tight">{spread.title}</span>
+                    <span className="spread-hint mt-1 block text-sm">{spread.hint}</span>
                   </span>
-                  <span className="shrink-0 text-[11px] text-muted-foreground">{countLabel(spread.count)}</span>
+                  <span className="spread-count shrink-0 text-xs">{countLabel(spread.count)}</span>
                 </button>
               </li>
             );
           })}
         </ul>
-        <p className="relative z-10 mt-4 text-sm text-muted-foreground">{active.roles.join(" · ")}</p>
+        <p className="spread-roles mt-3 text-sm">{active.roles.join(" · ")}</p>
       </div>
 
       <button type="submit" className="btn-cloth sticky bottom-[calc(4.6rem+env(safe-area-inset-bottom))] z-20 mt-8">

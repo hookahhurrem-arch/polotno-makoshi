@@ -804,45 +804,61 @@
 
 .rushnyk-bed {
   position: relative;
-  padding: 1.5rem 1rem 2rem;
-}
-
-.rushnyk-cloth {
-  pointer-events: none;
-  position: absolute;
-  inset: -8% -6%;
-  width: 112%;
-  height: 116%;
-  object-fit: cover;
-  opacity: 0.55;
-  mix-blend-mode: lighten;
+  padding: 0.2rem 0 1rem;
 }
 
 .spread-row {
   display: flex;
   width: 100%;
+  min-height: 3.6rem;
   align-items: center;
-  gap: 0.9rem;
-  padding: 0.7rem 0;
+  gap: 0.85rem;
+  padding: 0.45rem 0.4rem;
   text-align: left;
-  color: var(--color-muted-foreground);
+  color: #2a1a14;
+}
+
+.spread-hint,
+.spread-count,
+.spread-roles {
+  color: #5c4033;
 }
 
 .spread-row.is-on {
-  color: var(--color-sand);
+  color: #6d1414;
+  background: radial-gradient(90% 120% at 18% 50%, rgb(180 90 42 / 0.32), transparent 70%);
+}
+
+.spread-row.is-on .spread-hint,
+.spread-row.is-on .spread-count {
+  color: #6d1414;
 }
 
 .spread-row.is-on .spread-prop {
-  transform: translateY(-6px) scale(1.06);
-  filter: brightness(1.15) drop-shadow(0 0 18px rgb(180 90 42 / 0.45));
+  transform: translateY(-5px) scale(1.08);
+  filter: brightness(1.12) drop-shadow(0 0 16px rgb(180 90 42 / 0.5));
 }
 
 .spread-prop {
-  width: 3.4rem;
-  height: 3.4rem;
+  width: 4.25rem;
+  height: 4.25rem;
   flex-shrink: 0;
   object-fit: contain;
   transition: transform 280ms var(--ease-smooth-out), filter 280ms var(--ease-thread);
+}
+
+.reading-ink .field-ink {
+  color: #2a1a14;
+  border-bottom-color: #6d1414;
+}
+
+.reading-ink .field-ink::placeholder {
+  color: rgb(42 26 20 / 0.45);
+}
+
+.scene-stage[data-scene="table"] .scene-video {
+  mix-blend-mode: normal;
+  opacity: 0.92;
 }
 
 .btn-cloth {

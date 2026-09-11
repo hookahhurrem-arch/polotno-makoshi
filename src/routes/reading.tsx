@@ -195,20 +195,22 @@ function ReadingPage() {
     <AppShell scene="table">
       <div className="mx-auto max-w-4xl">
         {drawn ? (
-          <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-sand">
-            <IconCutBack />
-            Назад
-          </Link>
-        ) : null}
-        <p className="overline">{def.title}</p>
-        {drawn ? <h1 className="display-title mt-4 text-[2.4rem] sm:text-5xl">Полотно отвечает</h1> : null}
-        <div className="gold-rule mt-5 w-20" />
-        {drawn && question ? (
-          <p className="mt-5 max-w-xl text-base leading-[1.6] text-muted-foreground">«{question}»</p>
+          <>
+            <Link to="/" className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-sand">
+              <IconCutBack />
+              Назад
+            </Link>
+            <p className="font-display text-xl text-sand">{def.title}</p>
+            <h1 className="display-title mt-4 text-[2.4rem] sm:text-5xl">Полотно отвечает</h1>
+            <div className="gold-rule mt-5 w-20" />
+            {question ? (
+              <p className="mt-5 max-w-xl text-base leading-[1.6] text-muted-foreground">«{question}»</p>
+            ) : null}
+          </>
         ) : null}
 
         {!search.go && !drawn ? (
-          <div className="mt-16">
+          <div className="mt-4">
             <SpreadForm defaultQuestion={question} defaultSpread={kind} />
           </div>
         ) : search.go && (!drawn || ritual) ? (

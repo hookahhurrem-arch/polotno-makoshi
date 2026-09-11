@@ -3,13 +3,13 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { S as require_jsx_runtime, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as isCardFilled, n as cardDisplayTitle } from "./types-BvDlfgVm.mjs";
 import { C as tapPulse, _ as playRustle, a as IconCutBack, h as cn, v as playThud, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { a as saveLastReading, n as SPREAD_PROP, o as searchFromIds, r as idsFromSearch, t as AppShell } from "./app-shell-CRj0CsSH.mjs";
+import { a as saveLastReading, n as SPREAD_PROP, o as searchFromIds, r as idsFromSearch, t as AppShell } from "./app-shell-DVIIYE3U.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { a as weaveReading, c as spreadById, i as SPREADS, o as Route$5, s as CardBack } from "./router-ChfiDAau.mjs";
+import { a as weaveReading, c as spreadById, i as SPREADS, o as Route$5, s as CardBack } from "./router-D27DC4Q6.mjs";
 import { t as LivingMedia } from "./living-media-BcSSF-SS.mjs";
 import { t as addJournalEntry } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/reading-DXTaqI4E.js
+//#region node_modules/.nitro/vite/services/ssr/assets/reading-DZ9w52fE.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function countLabel(n) {
@@ -25,7 +25,7 @@ function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 		action: "/reading",
 		method: "get",
-		className: "relative z-20 w-full min-w-0 pb-8",
+		className: "reading-ink relative z-20 w-full min-w-0 pb-8",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 				type: "hidden",
@@ -53,57 +53,42 @@ function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }) {
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "rushnyk-bed mt-8",
+				className: "rushnyk-bed mt-4",
 				role: "radiogroup",
 				"aria-label": "Расклад",
-				children: [
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-						src: "/scenes/rushnyk.webp",
-						alt: "",
-						className: "rushnyk-cloth"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "relative z-10 font-display text-xl text-sand",
-						children: "Расклад"
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
-						className: "relative z-10 mt-4",
-						children: SPREADS.map((spread) => {
-							const on = picked === spread.id;
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-								type: "button",
-								onClick: () => setPicked(spread.id),
-								"aria-pressed": on,
-								className: cn("spread-row", on && "is-on"),
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-										src: SPREAD_PROP[spread.id],
-										alt: "",
-										className: "spread-prop"
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-										className: "min-w-0 flex-1",
-										children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "block font-display text-xl leading-tight",
-											children: spread.title
-										}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-											className: "mt-1 block text-sm",
-											children: spread.hint
-										})]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-										className: "shrink-0 text-[11px] text-muted-foreground",
-										children: countLabel(spread.count)
-									})
-								]
-							}) }, spread.id);
-						})
-					}),
-					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "relative z-10 mt-4 text-sm text-muted-foreground",
-						children: active.roles.join(" · ")
-					})
-				]
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: SPREADS.map((spread) => {
+					const on = picked === spread.id;
+					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+						type: "button",
+						onClick: () => setPicked(spread.id),
+						"aria-pressed": on,
+						className: cn("spread-row", on && "is-on"),
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+								src: SPREAD_PROP[spread.id],
+								alt: "",
+								className: "spread-prop"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+								className: "min-w-0 flex-1",
+								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "block font-display text-[1.45rem] leading-tight",
+									children: spread.title
+								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "spread-hint mt-1 block text-sm",
+									children: spread.hint
+								})]
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+								className: "spread-count shrink-0 text-xs",
+								children: countLabel(spread.count)
+							})
+						]
+					}) }, spread.id);
+				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "spread-roles mt-3 text-sm",
+					children: active.roles.join(" · ")
+				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 				type: "submit",
@@ -679,122 +664,121 @@ function ReadingPage() {
 		scene: "table",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "mx-auto max-w-4xl",
-			children: [
-				drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
+			children: [drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(import_jsx_runtime.Fragment, { children: [
+				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
 					to: "/",
 					className: "mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-sand",
 					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconCutBack, {}), "Назад"]
-				}) : null,
+				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "overline",
+					className: "font-display text-xl text-sand",
 					children: def.title
 				}),
-				drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
 					className: "display-title mt-4 text-[2.4rem] sm:text-5xl",
 					children: "Полотно отвечает"
-				}) : null,
+				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule mt-5 w-20" }),
-				drawn && question ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
+				question ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("p", {
 					className: "mt-5 max-w-xl text-base leading-[1.6] text-muted-foreground",
 					children: [
 						"«",
 						question,
 						"»"
 					]
-				}) : null,
-				!search.go && !drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-					className: "mt-16",
-					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpreadForm, {
-						defaultQuestion: question,
-						defaultSpread: kind
-					})
-				}) : search.go && (!drawn || ritual) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WeaveRitual, { onDone: finishRitual }) : drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "mt-16",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: cn("mx-auto grid justify-center gap-3", def.layout),
-						children: revealed.map((card, i) => {
-							const filled = isCardFilled(card);
-							const isOpen = opened[i];
-							return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
-								className: cn("card-arrive w-full justify-self-center", count === 1 ? "max-w-[16.5rem]" : count <= 3 ? "max-w-[7.4rem] sm:max-w-[10rem]" : "max-w-[6.4rem] sm:max-w-[8.5rem]"),
-								style: { animationDelay: `${i * 150}ms` },
-								children: [
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mb-2 text-center text-[10px] tracking-[0.18em] text-gold uppercase",
-										children: def.roles[i]
-									}),
-									/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
-										type: "button",
-										onClick: () => openCard(i),
-										className: "block w-full",
-										"aria-label": isOpen ? cardDisplayTitle(card) : "Перевернуть карту",
-										children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-											className: "flip-scene aspect-card w-full",
-											children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-												className: cn("flip-card", isOpen && "is-open"),
-												children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-													className: "flip-face",
-													children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardBack, { className: "size-full" })
-												}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-													className: "flip-face flip-face-front",
-													"aria-hidden": !isOpen,
-													children: [filled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LivingMedia, {
-														card,
-														localVideoUrl: localVideoUrls[card.number],
-														className: "size-full",
-														autoPlay: false
-													}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardBack, { className: "size-full" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "gleam" })]
-												})]
-											})
-										})
-									}),
-									isOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-										to: "/card/$number",
-										params: { number: String(card.number) },
-										className: "mt-2 block text-center font-display text-sm leading-tight text-sand",
-										children: cardDisplayTitle(card)
-									}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-										className: "mt-2 text-center text-xs text-muted-foreground",
-										children: "касанием"
-									})
-								]
-							}, `${card.number}-${i}`);
-						})
-					}), allOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-						className: "slide-up mx-auto mt-4 max-w-xl",
-						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WeaverPanel, {
-							question,
-							cards: revealed,
-							roles: def.roles,
-							spread: kind,
-							autoStart: true,
-							onWoven: setWeaving
-						}, weaveKey), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "mt-10 flex flex-wrap gap-2",
+				}) : null
+			] }) : null, !search.go && !drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "mt-4",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpreadForm, {
+					defaultQuestion: question,
+					defaultSpread: kind
+				})
+			}) : search.go && (!drawn || ritual) ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(WeaveRitual, { onDone: finishRitual }) : drawn ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "mt-16",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: cn("mx-auto grid justify-center gap-3", def.layout),
+					children: revealed.map((card, i) => {
+						const filled = isCardFilled(card);
+						const isOpen = opened[i];
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("article", {
+							className: cn("card-arrive w-full justify-self-center", count === 1 ? "max-w-[16.5rem]" : count <= 3 ? "max-w-[7.4rem] sm:max-w-[10rem]" : "max-w-[6.4rem] sm:max-w-[8.5rem]"),
+							style: { animationDelay: `${i * 150}ms` },
 							children: [
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									variant: "outline",
-									onClick: again,
-									children: "Ещё раз"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mb-2 text-center text-[10px] tracking-[0.18em] text-gold uppercase",
+									children: def.roles[i]
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									onClick: save,
-									disabled: saved,
-									children: saved ? "В дневнике" : "Сохранить в дневник"
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+									type: "button",
+									onClick: () => openCard(i),
+									className: "block w-full",
+									"aria-label": isOpen ? cardDisplayTitle(card) : "Перевернуть карту",
+									children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+										className: "flip-scene aspect-card w-full",
+										children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+											className: cn("flip-card", isOpen && "is-open"),
+											children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+												className: "flip-face",
+												children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardBack, { className: "size-full" })
+											}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+												className: "flip-face flip-face-front",
+												"aria-hidden": !isOpen,
+												children: [filled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(LivingMedia, {
+													card,
+													localVideoUrl: localVideoUrls[card.number],
+													className: "size-full",
+													autoPlay: false
+												}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardBack, { className: "size-full" }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "gleam" })]
+											})]
+										})
+									})
 								}),
-								/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
-									variant: "outline",
-									onClick: () => void share(),
-									children: "Поделиться"
+								isOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+									to: "/card/$number",
+									params: { number: String(card.number) },
+									className: "mt-2 block text-center font-display text-sm leading-tight text-sand",
+									children: cardDisplayTitle(card)
+								}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+									className: "mt-2 text-center text-xs text-muted-foreground",
+									children: "касанием"
 								})
 							]
-						})]
-					}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "mt-8 text-center text-sm text-muted-foreground",
-						children: "Переверните все карты — Ткач выйдет снизу."
+						}, `${card.number}-${i}`);
+					})
+				}), allOpen ? /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+					className: "slide-up mx-auto mt-4 max-w-xl",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WeaverPanel, {
+						question,
+						cards: revealed,
+						roles: def.roles,
+						spread: kind,
+						autoStart: true,
+						onWoven: setWeaving
+					}, weaveKey), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+						className: "mt-10 flex flex-wrap gap-2",
+						children: [
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								onClick: again,
+								children: "Ещё раз"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								onClick: save,
+								disabled: saved,
+								children: saved ? "В дневнике" : "Сохранить в дневник"
+							}),
+							/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Button, {
+								variant: "outline",
+								onClick: () => void share(),
+								children: "Поделиться"
+							})
+						]
 					})]
-				}) : null
-			]
+				}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "mt-8 text-center text-sm text-muted-foreground",
+					children: "Переверните все карты — Ткач выйдет снизу."
+				})]
+			}) : null]
 		})
 	});
 }

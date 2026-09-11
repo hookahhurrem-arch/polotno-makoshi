@@ -1,8 +1,8 @@
 import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime, f as useRouterState, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
-import { S as stopCrackle, a as IconCutBack, b as soundEnabled, c as IconHasp, f as IconSpindle, h as cn, i as IconBookClasp, l as IconHearth, m as IconWindow, p as IconThreadKnot, w as useOracleStore, x as startCrackle, y as setSoundEnabled } from "./store-okPazmL_.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-CRj0CsSH.js
+import { S as stopCrackle, b as soundEnabled, c as IconHasp, f as IconSpindle, h as cn, i as IconBookClasp, l as IconHearth, m as IconWindow, p as IconThreadKnot, w as useOracleStore, x as startCrackle, y as setSoundEnabled } from "./store-okPazmL_.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-DVIIYE3U.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function fxTier() {
@@ -80,6 +80,7 @@ function SceneStage({ name }) {
 	const video = tier === "full" ? SCENE_VIDEO[name] : void 0;
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		className: "scene-stage",
+		"data-scene": name,
 		"aria-hidden": "true",
 		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 			className: "scene-bg-inner",
@@ -220,7 +221,7 @@ function SiteNav() {
 					"aria-pressed": sound,
 					"aria-label": sound ? "Выключить звук" : "Включить звук",
 					title: sound ? "Звук включён" : "Звук выключен",
-					children: sound ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconHearth, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconCutBack, {})
+					children: sound ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconHearth, {}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)(IconSpindle, {})
 				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("nav", {
 					className: "hidden items-center gap-1 md:flex",
 					children: ITEMS.map((item) => {

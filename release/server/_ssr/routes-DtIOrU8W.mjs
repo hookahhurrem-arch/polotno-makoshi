@@ -5,11 +5,11 @@ import { n as createServerFn } from "./ssr.mjs";
 import { n as cardDisplayTitle, s as withDayFields } from "./types-BvDlfgVm.mjs";
 import { a as number, o as object, s as string } from "../_libs/zod.mjs";
 import { C as tapPulse, g as createSsrRpc, h as cn, p as IconThreadKnot, v as playThud, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-CRj0CsSH.mjs";
-import { s as CardBack } from "./router-ChfiDAau.mjs";
+import { t as AppShell } from "./app-shell-DVIIYE3U.mjs";
+import { s as CardBack } from "./router-D27DC4Q6.mjs";
 import { t as CardFace } from "./card-face-CYlRq-G0.mjs";
 import { r as rememberDayThread } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BlQ0JPTv.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-DtIOrU8W.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function SpindleButton({ to = "/reading", label = "Сплести нити" }) {

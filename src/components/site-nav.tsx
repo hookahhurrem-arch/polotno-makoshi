@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
 import {
   IconBookClasp,
-  IconCutBack,
   IconHasp,
   IconHearth,
   IconSpindle,
@@ -55,7 +54,7 @@ export function SiteNav() {
               aria-label={sound ? "Выключить звук" : "Включить звук"}
               title={sound ? "Звук включён" : "Звук выключен"}
             >
-              {sound ? <IconHearth /> : <IconCutBack />}
+              {sound ? <IconHearth /> : <IconSpindle />}
             </button>
             <nav className="hidden items-center gap-1 md:flex">
               {ITEMS.map((item) => {
