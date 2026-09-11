@@ -1,12 +1,17 @@
 meta:
-  environment: docker
+  environment: node
   toolchain:
-    name: docker
-    version: latest
+    name: npm
+    version: 20
 
 build:
-  dockerfile: Dockerfile
   skip: false
+  additionalCommands: npm run build:amvera
+  artifacts:
+    "*": /
+    ".*": /
+    ".output": /
 
 run:
+  command: node .output/server/index.mjs
   containerPort: 80
