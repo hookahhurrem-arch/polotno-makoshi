@@ -3,15 +3,23 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { S as require_jsx_runtime, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as isCardFilled, n as cardDisplayTitle } from "./types-BvDlfgVm.mjs";
 import { C as tapPulse, _ as playRustle, a as IconCutBack, h as cn, v as playThud, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { a as saveLastReading, n as SPREAD_PROP, o as searchFromIds, r as idsFromSearch, t as AppShell } from "./app-shell-UmDnKWIe.mjs";
+import { a as searchFromIds, i as saveLastReading, n as idsFromSearch, t as AppShell } from "./app-shell-CNkh6CD4.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { a as weaveReading, c as spreadById, i as SPREADS, o as Route$5, s as CardBack } from "./router-B_czGqdl.mjs";
+import { a as weaveReading, c as spreadById, i as SPREADS, o as Route$5, s as CardBack } from "./router-BavX7j7-.mjs";
 import { t as LivingMedia } from "./living-media-BcSSF-SS.mjs";
 import { t as addJournalEntry } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/reading-DDMY6Qqi.js
+//#region node_modules/.nitro/vite/services/ssr/assets/reading-iLbP-gyU.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
+var SPREAD_PROP = {
+	one: "/scenes/one.webp",
+	three: "/scenes/three.webp",
+	knot: "/scenes/knot.webp",
+	foreign: "/scenes/foreign.webp",
+	two: "/scenes/two.webp",
+	krosna: "/scenes/krosna.webp"
+};
 function countLabel(n) {
 	const ten = n % 10;
 	const hundred = n % 100;

@@ -2,7 +2,7 @@ import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime, f as useRouterState, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { S as stopCrackle, b as soundEnabled, c as IconHasp, f as IconSpindle, h as cn, i as IconBookClasp, l as IconHearth, m as IconWindow, p as IconThreadKnot, w as useOracleStore, x as startCrackle, y as setSoundEnabled } from "./store-okPazmL_.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-UmDnKWIe.js
+//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-CNkh6CD4.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function fxTier() {
@@ -15,77 +15,30 @@ function fxTier() {
 }
 function Atmosphere() {
 	const [tier, setTier] = (0, import_react.useState)("lite");
-	const lamp = (0, import_react.useRef)(null);
 	(0, import_react.useEffect)(() => {
 		setTier(fxTier());
 	}, []);
-	(0, import_react.useEffect)(() => {
-		if (tier === "min") return;
-		const node = lamp.current;
-		if (!node) return;
-		const move = (event) => {
-			node.style.setProperty("--lamp-x", `${event.clientX}px`);
-			node.style.setProperty("--lamp-y", `${event.clientY}px`);
-		};
-		window.addEventListener("pointermove", move, { passive: true });
-		return () => window.removeEventListener("pointermove", move);
-	}, [tier]);
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 		"aria-hidden": "true",
 		className: "chamber-layers",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "hearth hearth-breathe" }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "twill" }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "grain" }),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "vignette" }),
-			tier !== "min" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				ref: lamp,
-				className: "chamber-lamp"
-			}) : null
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "archive-field" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "archive-depth" }),
+			tier !== "min" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "archive-fiber" }) : null,
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "archive-grid" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "archive-well" }),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "archive-vignette" })
 		]
 	});
 }
-var SCENE_VIDEO = {
-	chamber: "/videos/chamber.mp4",
-	table: "/videos/table.mp4"
-};
-var SPREAD_PROP = {
-	one: "/scenes/one.webp",
-	three: "/scenes/three.webp",
-	knot: "/scenes/knot.webp",
-	foreign: "/scenes/foreign.webp",
-	two: "/scenes/two.webp",
-	krosna: "/scenes/krosna.webp"
-};
 function SceneStage({ name }) {
-	const [tier, setTier] = (0, import_react.useState)("lite");
-	const [shift, setShift] = (0, import_react.useState)({
-		x: 0,
-		y: 0
-	});
-	(0, import_react.useEffect)(() => {
-		setTier(fxTier());
-	}, []);
-	(0, import_react.useEffect)(() => {
-		if (tier === "min") return;
-		const onMove = (event) => {
-			setShift({
-				x: event.clientX / window.innerWidth - .5,
-				y: event.clientY / window.innerHeight - .5
-			});
-		};
-		window.addEventListener("pointermove", onMove, { passive: true });
-		return () => window.removeEventListener("pointermove", onMove);
-	}, [tier]);
-	const video = tier === "full" ? SCENE_VIDEO[name] : void 0;
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 		className: "scene-stage",
 		"data-scene": name,
 		"aria-hidden": "true",
-		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+		children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 			className: "scene-bg-inner",
-			style: { transform: `translate3d(${shift.x * -10}px, ${shift.y * -7}px, 0) scale(1.1)` },
-			children: [/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("picture", { children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("source", {
 					media: "(orientation: portrait)",
 					srcSet: `/scenes/${name}-tall.webp`,
@@ -100,19 +53,8 @@ function SceneStage({ name }) {
 					alt: "",
 					className: "scene-photo"
 				})
-			] }), video ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("video", {
-				className: "scene-video",
-				src: video,
-				autoPlay: true,
-				muted: true,
-				loop: true,
-				playsInline: true,
-				preload: "metadata"
-			}) : null]
-		}), tier !== "min" ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-			className: "scene-dust",
-			style: { transform: `translate3d(${shift.x * -26}px, ${shift.y * -16}px, 0)` }
-		}) : null]
+			] })
+		})
 	});
 }
 var KEY = "makosh-last-reading";
@@ -281,4 +223,4 @@ function AppShell({ children, className, scene }) {
 	});
 }
 //#endregion
-export { saveLastReading as a, loadLastReading as i, SPREAD_PROP as n, searchFromIds as o, idsFromSearch as r, AppShell as t };
+export { searchFromIds as a, saveLastReading as i, idsFromSearch as n, loadLastReading as r, AppShell as t };

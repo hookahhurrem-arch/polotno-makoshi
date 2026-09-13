@@ -26,7 +26,7 @@
   --font-display: "Devils";
   --font-ui: "Manrope", ui-sans-serif, system-ui, sans-serif;
 
-  --color-background: #0b0908;
+  --color-background: #080707;
   --color-foreground: #c9bfb5;
   --color-card: #161010;
   --color-card-foreground: #c9bfb5;
@@ -87,7 +87,7 @@
     font-family: var(--font-sans);
     line-height: 1.65;
     overflow-x: clip;
-    background: #0b0908;
+    background: #080707;
   }
 
   h1,
@@ -131,53 +131,63 @@
   letter-spacing: 0.16em;
 }
 
-.hearth {
+.archive-field {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 0;
-  background: radial-gradient(120% 80% at 50% 22%, rgb(180 68 42 / 0.1), transparent 60%);
+  background: #080707;
 }
 
-.twill {
+.archive-depth {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(90% 70% at 50% 0%, rgb(26 17 16 / 0.38), transparent 58%),
+    radial-gradient(70% 55% at 88% 100%, rgb(58 17 20 / 0.16), transparent 62%),
+    radial-gradient(55% 45% at 8% 92%, rgb(17 16 15 / 0.55), transparent 58%);
+}
+
+.archive-fiber {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 1;
-  opacity: 0.55;
-  background-image:
-    repeating-linear-gradient(0deg, rgb(196 176 150 / 0.07) 0 1px, transparent 1px 5px),
-    repeating-linear-gradient(90deg, rgb(196 176 150 / 0.05) 0 1px, transparent 1px 4px);
-}
-
-.grain {
-  pointer-events: none;
-  position: fixed;
-  inset: 0;
-  z-index: 1;
-  opacity: 0.035;
+  opacity: 0.045;
+  background: url("/scenes/paper.webp") center / 280px 280px repeat;
   mix-blend-mode: overlay;
-  background-image: repeating-radial-gradient(
-    circle at 18% 22%,
-    rgb(232 220 200 / 0.18) 0 0.5px,
-    transparent 0.6px 3px
-  );
 }
 
-.linen {
+.archive-grid {
   pointer-events: none;
   position: fixed;
   inset: 0;
-  z-index: 0;
-  opacity: 0.04;
+  z-index: 1;
+  opacity: 0.028;
+  background-image:
+    linear-gradient(rgb(228 212 184 / 0.35) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(228 212 184 / 0.28) 1px, transparent 1px);
+  background-size: 72px 72px;
 }
 
-.vignette {
+.archive-well {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background: radial-gradient(42% 36% at 50% 34%, rgb(228 212 184 / 0.028), transparent 72%);
+}
+
+.archive-vignette {
   pointer-events: none;
   position: fixed;
   inset: 0;
   z-index: 2;
-  background: radial-gradient(100% 100% at 50% 50%, transparent 48%, rgb(0 0 0 / 0.62));
+  background:
+    radial-gradient(80% 70% at 50% 42%, transparent 46%, rgb(8 7 7 / 0.55) 100%),
+    linear-gradient(180deg, rgb(8 7 7 / 0.28) 0%, transparent 16%, transparent 72%, rgb(8 7 7 / 0.62) 100%);
 }
 
 .gold-rule {
@@ -620,45 +630,12 @@
 }
 
 .chamber-video {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: blur(18px) brightness(0.28) saturate(0.7);
-  opacity: 0.45;
+  display: none;
 }
 
-.hearth-breathe {
-  animation: hearth-breathe 7.4s ease-in-out infinite;
-}
-
-@keyframes hearth-breathe {
-  0%,
-  100% {
-    opacity: 0.7;
-  }
-  45% {
-    opacity: 1;
-  }
-}
-
-.chamber-lamp {
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(
-    220px 220px at var(--lamp-x, 50%) var(--lamp-y, 30%),
-    rgb(180 90 42 / 0.12),
-    transparent 70%
-  );
-  mix-blend-mode: screen;
-}
-
+.chamber-lamp,
 .chamber-dust {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
+  display: none;
 }
 
 .threshold {
@@ -751,8 +728,7 @@
 
 .scene-bg-inner {
   position: absolute;
-  inset: -6%;
-  will-change: transform;
+  inset: 0;
 }
 
 .scene-photo,
@@ -762,33 +738,55 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  opacity: 0.18;
+  filter: saturate(0.35) brightness(0.42) contrast(0.92);
 }
 
 .scene-video {
-  opacity: 0.72;
-  mix-blend-mode: lighten;
+  display: none;
 }
 
 .scene-dust {
-  position: absolute;
-  inset: -10%;
-  background: url("/scenes/dust.webp") center / cover no-repeat;
-  mix-blend-mode: screen;
-  opacity: 0.28;
-  will-change: transform;
+  display: none;
 }
 
 .scene-stage::after {
   content: "";
   position: absolute;
   inset: 0;
+  background:
+    linear-gradient(180deg, rgb(8 7 7 / 0.72) 0%, rgb(8 7 7 / 0.5) 38%, rgb(8 7 7 / 0.82) 100%);
+}
+
+.scene-stage[data-scene="book"] .scene-photo {
+  opacity: 0.5;
+  filter: saturate(0.55) brightness(0.72) contrast(0.96);
+}
+
+.scene-stage[data-scene="casket"] .scene-photo {
+  opacity: 0.38;
+  filter: saturate(0.45) brightness(0.55) contrast(0.94);
+}
+
+.scene-stage[data-scene="book"]::after {
   background: linear-gradient(
     180deg,
-    rgb(11 9 8 / 0.55) 0%,
-    rgb(11 9 8 / 0.12) 18%,
-    transparent 38%,
-    rgb(11 9 8 / 0.35) 72%,
-    #0b0908 92%
+    rgb(8 7 7 / 0.5) 0%,
+    rgb(8 7 7 / 0.12) 18%,
+    transparent 36%,
+    rgb(8 7 7 / 0.28) 76%,
+    #080707 94%
+  );
+}
+
+.scene-stage[data-scene="casket"]::after {
+  background: linear-gradient(
+    180deg,
+    rgb(8 7 7 / 0.62) 0%,
+    rgb(8 7 7 / 0.22) 22%,
+    rgb(8 7 7 / 0.18) 48%,
+    rgb(8 7 7 / 0.55) 78%,
+    #080707 94%
   );
 }
 
@@ -840,6 +838,16 @@
   inset: 12% 8%;
   background: radial-gradient(circle, rgb(142 28 28 / 0.35), transparent 68%);
   animation: hearth-breathe 3.6s ease-in-out infinite;
+}
+
+@keyframes hearth-breathe {
+  0%,
+  100% {
+    opacity: 0.7;
+  }
+  45% {
+    opacity: 1;
+  }
 }
 
 .spindle-img {
@@ -1026,16 +1034,11 @@
   .weaver-para,
   .gold-rule,
   .knot-flash,
-  .hearth-breathe,
   .yarn-path,
   .yarn-knot,
   .chamber-page,
-  .chamber-lamp,
-  .chamber-dust,
   .spindle-glow,
-  .weaver-shuttle,
-  .scene-dust,
-  .scene-bg-inner {
+  .weaver-shuttle {
     animation: none !important;
     transition: none !important;
   }
