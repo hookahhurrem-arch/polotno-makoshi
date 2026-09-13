@@ -14,8 +14,8 @@
 @font-face {
   font-family: "Devils";
   src:
-    url("/fonts/Devils.woff2") format("woff2"),
-    url("/fonts/Devils.ttf") format("truetype");
+    url("/fonts/ST-Cherty.woff2") format("woff2"),
+    url("/fonts/ST-Cherty.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
   font-display: block;

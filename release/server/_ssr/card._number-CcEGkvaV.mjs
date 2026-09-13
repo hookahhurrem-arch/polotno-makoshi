@@ -5,9 +5,9 @@ import { n as cardDisplayTitle, o as padCardNumber, r as emptyCard } from "./typ
 import { a as IconCutBack, h as cn, o as IconCutForward, w as useOracleStore } from "./store-okPazmL_.mjs";
 import { i as loadLastReading, t as AppShell } from "./app-shell-UmDnKWIe.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
-import { r as Route$2 } from "./router-byROBHjQ.mjs";
+import { r as Route$2 } from "./router-B_czGqdl.mjs";
 import { t as LivingMedia } from "./living-media-BcSSF-SS.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/card._number-B56Qc7HZ.js
+//#region node_modules/.nitro/vite/services/ssr/assets/card._number-CcEGkvaV.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function wrap(n) {

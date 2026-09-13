@@ -4,9 +4,9 @@ import { u as IconRoot, w as useOracleStore } from "./store-okPazmL_.mjs";
 import { t as AppShell } from "./app-shell-UmDnKWIe.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { t as CardTile } from "./card-tile-nSw_7hGQ.mjs";
+import { t as CardTile } from "./card-tile-D1u2RjpL.mjs";
 import { i as Textarea, n as Label, r as StudioGate, t as Input } from "./textarea-C-Y0x__c.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/studio.index-DvLwtrv-.js
+//#region node_modules/.nitro/vite/services/ssr/assets/studio.index-C6uOZpG9.js
 var import_jsx_runtime = require_jsx_runtime();
 function StudioPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StudioGate, { children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StudioInner, {}) });
