@@ -34,7 +34,7 @@ function AboutPage() {
 
         <section className="mt-16">
           <p className="overline">Автор</p>
-          <h2 className="mt-3 font-display text-4xl tracking-[0.1em] text-sand">Темнояр</h2>
+          <h2 className="mt-3 font-display text-4xl tracking-[0.08em] text-sand">Темнояр</h2>
           <div className="gold-rule mt-4 w-16" />
           <div className="author-frame mt-8">
             <img src={AUTHOR_IMAGE} alt="Темнояр — Дмитрий" className="author-photo" />

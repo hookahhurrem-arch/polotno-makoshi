@@ -51,7 +51,7 @@ export function Splash() {
           </div>
         </div>
         <p className="overline relative mt-8">Порог</p>
-        <h1 className="mt-3 font-display text-4xl tracking-[0.14em] text-sand">Горница Пряхи</h1>
+        <h1 className="mt-3 font-display text-4xl tracking-[0.08em] text-sand">Горница Пряхи</h1>
         <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
           {short ? "Свет ещё держится." : "За занавесью ткётся полотно. Войдите со звуком или в тишине."}
         </p>

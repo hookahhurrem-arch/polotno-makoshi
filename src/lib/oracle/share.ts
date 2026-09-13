@@ -64,7 +64,7 @@ export async function shareSpread(input: {
   ctx.fillText("ПОЛОТНО МАКОШИ", w / 2, 130);
 
   ctx.fillStyle = "#E4D4B8";
-  ctx.font = "64px 'Cormorant Garamond', serif";
+  ctx.font = "64px Devils, serif";
   ctx.letterSpacing = "4px";
   ctx.fillText(input.deck, w / 2, 210);
 
@@ -107,7 +107,7 @@ export async function shareSpread(input: {
     ctx.strokeStyle = "rgba(216,192,138,0.7)";
     ctx.strokeRect(x, y, cardW, cardH);
     ctx.fillStyle = "#E4D4B8";
-    ctx.font = "28px 'Cormorant Garamond', serif";
+    ctx.font = "28px Devils, serif";
     ctx.textAlign = "center";
     ctx.fillText(cardDisplayTitle(card), x + cardW / 2, y + cardH + 36);
   });

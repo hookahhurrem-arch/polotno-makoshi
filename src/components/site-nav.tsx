@@ -36,7 +36,7 @@ export function SiteNav() {
     <>
       <header className="sticky top-0 z-30 border-b border-[#2a211e] bg-[#0b0908]/94 backdrop-blur-[16px]">
         <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-7 md:px-12">
-          <Link to="/" className="font-display text-lg tracking-[0.16em] text-sand">
+          <Link to="/" className="font-display text-lg tracking-[0.08em] text-sand">
             {name}
           </Link>
           <div className="flex items-center gap-2">
