@@ -26,7 +26,7 @@ export function CardTile({ card, mode = "view", className, showEmptyAsBack = tru
         const box = event.currentTarget.getBoundingClientRect();
         const px = (event.clientX - box.left) / box.width - 0.5;
         const py = (event.clientY - box.top) / box.height - 0.5;
-        setTilt({ x: py * -6, y: px * 8 });
+        setTilt({ x: py * -6, y: px * 6 });
       }}
       onPointerLeave={() => setTilt({ x: 0, y: 0 })}
       className={cn(

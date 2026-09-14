@@ -5,27 +5,30 @@ import { n as createServerFn } from "./ssr.mjs";
 import { n as cardDisplayTitle, s as withDayFields } from "./types-BvDlfgVm.mjs";
 import { a as number, o as object, s as string } from "../_libs/zod.mjs";
 import { C as tapPulse, g as createSsrRpc, h as cn, p as IconThreadKnot, v as playThud, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-CNkh6CD4.mjs";
-import { s as CardBack } from "./router-BavX7j7-.mjs";
+import { t as AppShell } from "./app-shell-XizQNRfG.mjs";
+import { s as CardBack } from "./router-Ypy5BRdx.mjs";
 import { t as CardFace } from "./card-face-CYlRq-G0.mjs";
 import { r as rememberDayThread } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-Chq6OZPg.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes-BWB1NuJO.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function SpindleButton({ to = "/reading", label = "Сплести нити" }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
 		to,
-		className: "spindle-hit group",
+		className: "hero-weave",
 		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", { className: "spindle-glow" }),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
 				src: "/scenes/spindle.webp",
 				alt: "",
-				className: "spindle-img"
+				className: "hero-spindle"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: "spindle-label",
+				className: "hero-title",
 				children: label
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+				className: "hero-caption",
+				children: "Коснитесь веретена — нить размотается к кроснам."
 			})
 		]
 	});
@@ -369,10 +372,10 @@ function ThreadOfDay() {
 		window.setTimeout(() => setTextOn(true), 800);
 	};
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-		className: "relative isolate z-10 mt-20 p-6 sm:p-8 gramota",
+		className: "still-panel relative isolate z-10 mt-10 p-6 sm:p-8",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-				className: "font-display text-xl text-sand",
+				className: "font-display text-xl tracking-[0.08em] text-gold",
 				children: "Нить дня"
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h2", {
@@ -385,18 +388,21 @@ function ThreadOfDay() {
 				children: "Касанием откройте карту дня. Полотно скажет, чего ждать, что сделать и чего не делать до полуночи."
 			}),
 			settled ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-				className: "mx-auto mt-6 aspect-card w-36 overflow-hidden sm:w-40",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardFace, {
-					card,
-					className: "size-full",
-					showTitle: false
-				}, card.number)
-			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				className: "bind-stage mx-auto mt-6 w-36 sm:w-40",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+					className: "aspect-card overflow-hidden",
+					children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardFace, {
+						card,
+						className: "size-full",
+						showTitle: false
+					}, card.number)
+				})
+			}) : /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
 				type: "button",
 				onClick: flip,
-				className: "mx-auto mt-6 block w-36 sm:w-40",
+				className: "bind-stage mx-auto mt-6 block w-36 sm:w-40",
 				"aria-label": "Открыть карту дня",
-				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "flip-scene aspect-card w-full",
 					children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
 						className: cn("flip-card", open && "is-open"),
@@ -412,8 +418,28 @@ function ThreadOfDay() {
 							}, card.number)
 						})]
 					})
-				})
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+					className: cn("bind-thread", open && "is-loose"),
+					viewBox: "0 0 100 150",
+					fill: "none",
+					"aria-hidden": "true",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+						d: "M12 18 C 38 8, 62 28, 88 16 S 92 70, 78 92 S 28 128, 18 142",
+						stroke: "#6B1C1C",
+						strokeWidth: "3.2"
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+						d: "M22 8 C 8 52, 90 58, 70 148",
+						stroke: "#8B2A2A",
+						strokeWidth: "2.2"
+					})]
+				})]
 			}),
+			!open ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
+				type: "button",
+				onClick: flip,
+				className: "btn-cloth mt-7",
+				children: "Открыть карту"
+			}) : null,
 			open ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 				className: "mt-5 text-center font-display text-2xl tracking-[0.08em] text-sand",
 				children: cardDisplayTitle(card)
@@ -437,41 +463,17 @@ function ThreadOfDay() {
 }
 function Home() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppShell, {
-		className: "!pt-8",
+		className: "home-shell !pt-2",
 		scene: "chamber",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "relative mx-auto max-w-2xl",
+			className: "home-stage",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "lead mt-6 max-w-md",
+					className: "home-aside",
 					children: "Сто восемь нитей. Одна ткань судьбы."
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpindleButton, {}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "mt-3 max-w-sm text-sm text-muted-foreground",
-					children: "Коснитесь веретена — нить размотается к кроснам."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThreadOfDay, {}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("nav", {
-					className: "mt-16 flex flex-wrap gap-x-8 gap-y-3 text-sm",
-					children: [
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-							to: "/deck",
-							className: "text-sand",
-							children: "Гримуар"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-							to: "/journal",
-							className: "text-sand",
-							children: "Архив"
-						}),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
-							to: "/about",
-							className: "text-muted-foreground",
-							children: "О Полотне"
-						})
-					]
-				})
+				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThreadOfDay, {})
 			]
 		})
 	});

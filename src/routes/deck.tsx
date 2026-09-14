@@ -48,22 +48,18 @@ function DeckPage() {
 
   return (
     <AppShell scene="book">
-      <div className="book-ink flex flex-col gap-8">
-        <header className="max-w-xl">
-          <h1 className="display-title text-[2.6rem] sm:text-5xl">Гримуар</h1>
-          <p className="mt-4 max-w-sm text-sm leading-[1.6]">
+      <div className="flex flex-col gap-8">
+        <header className="grim-head max-w-xl">
+          <p className="font-display text-xl tracking-[0.14em] text-gold">Гримуар</p>
+          <h1 className="display-title mt-2">Слово. Образ. Знание.</h1>
+          <p className="mt-4 max-w-sm text-sm leading-[1.65] text-muted-foreground">
             Сто восемь нитей. Нажмите карту, чтобы прочитать её.
           </p>
+          <div className="gold-rule mt-5 w-16" />
         </header>
 
-        <div className="flex flex-col gap-3 sm:flex-row sm:items-center">
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Название, номер, ключевые слова"
-            className="field-ink h-11 w-full max-w-sm px-0 text-sm"
-          />
-          <div className="flex gap-4">
+        <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+          <div className="flex gap-5">
             {(
               [
                 ["all", "Все"],
@@ -75,21 +71,27 @@ function DeckPage() {
                 key={id}
                 type="button"
                 onClick={() => setFilter(id)}
-                className={cn("text-sm", filter === id ? "text-[#6d1414]" : "opacity-60")}
+                className={cn("filter-thread text-sm", filter === id && "is-on")}
               >
                 {label}
               </button>
             ))}
           </div>
+          <input
+            value={query}
+            onChange={(e) => setQuery(e.target.value)}
+            placeholder="Поиск"
+            className="field-ink h-11 w-full max-w-xs px-0 text-sm text-sand"
+          />
         </div>
 
         <div className="grid grid-cols-2 gap-5 md:gap-6">
           {visible.map((card) => (
-            <CardTile key={card.number} card={card} className="card-on-page" />
+            <CardTile key={card.number} card={card} className="card-frame" />
           ))}
         </div>
         {visible.length === 0 ? (
-          <p className="py-10 text-sm">Нить не нашлась.</p>
+          <p className="py-10 text-sm text-muted-foreground">Нить не нашлась.</p>
         ) : null}
       </div>
     </AppShell>

@@ -2,9 +2,9 @@ import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].mjs";
 import { h as cn, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-CNkh6CD4.mjs";
-import { t as CardTile } from "./card-tile-DmvDH3bL.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/deck-DODYNrvH.js
+import { t as AppShell } from "./app-shell-XizQNRfG.mjs";
+import { t as CardTile } from "./card-tile-ILsYPN_Y.mjs";
+//#region node_modules/.nitro/vite/services/ssr/assets/deck-B5ALYw7Y.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var LIGHT = /удач|светл|благ|любов|урожа|жив(ая|ой) вод|счастлив|дар|плод|луг|мир|радост|свадьб|мёд|мёд|тепло|исцел|удачн/i;
@@ -54,27 +54,30 @@ function DeckPage() {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppShell, {
 		scene: "book",
 		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-			className: "book-ink flex flex-col gap-8",
+			className: "flex flex-col gap-8",
 			children: [
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
-					className: "max-w-xl",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
-						className: "display-title text-[2.6rem] sm:text-5xl",
-						children: "Гримуар"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-						className: "mt-4 max-w-sm text-sm leading-[1.6]",
-						children: "Сто восемь нитей. Нажмите карту, чтобы прочитать её."
-					})]
+					className: "grim-head max-w-xl",
+					children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "font-display text-xl tracking-[0.14em] text-gold",
+							children: "Гримуар"
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+							className: "display-title mt-2",
+							children: "Слово. Образ. Знание."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+							className: "mt-4 max-w-sm text-sm leading-[1.65] text-muted-foreground",
+							children: "Сто восемь нитей. Нажмите карту, чтобы прочитать её."
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule mt-5 w-16" })
+					]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-					className: "flex flex-col gap-3 sm:flex-row sm:items-center",
-					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
-						value: query,
-						onChange: (e) => setQuery(e.target.value),
-						placeholder: "Название, номер, ключевые слова",
-						className: "field-ink h-11 w-full max-w-sm px-0 text-sm"
-					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
-						className: "flex gap-4",
+					className: "flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between",
+					children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+						className: "flex gap-5",
 						children: [
 							["all", "Все"],
 							["light", "Светлые"],
@@ -82,20 +85,25 @@ function DeckPage() {
 						].map(([id, label]) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("button", {
 							type: "button",
 							onClick: () => setFilter(id),
-							className: cn("text-sm", filter === id ? "text-[#6d1414]" : "opacity-60"),
+							className: cn("filter-thread text-sm", filter === id && "is-on"),
 							children: label
 						}, id))
+					}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
+						value: query,
+						onChange: (e) => setQuery(e.target.value),
+						placeholder: "Поиск",
+						className: "field-ink h-11 w-full max-w-xs px-0 text-sm text-sand"
 					})]
 				}),
 				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
 					className: "grid grid-cols-2 gap-5 md:gap-6",
 					children: visible.map((card) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)(CardTile, {
 						card,
-						className: "card-on-page"
+						className: "card-frame"
 					}, card.number))
 				}),
 				visible.length === 0 ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
-					className: "py-10 text-sm",
+					className: "py-10 text-sm text-muted-foreground",
 					children: "Нить не нашлась."
 				}) : null
 			]

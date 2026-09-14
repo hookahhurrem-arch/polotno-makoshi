@@ -193,19 +193,21 @@ export function ThreadOfDay() {
   };
 
   return (
-    <section className="relative isolate z-10 mt-20 p-6 sm:p-8 gramota">
-      <p className="font-display text-xl text-sand">Нить дня</p>
+    <section className="still-panel relative isolate z-10 mt-10 p-6 sm:p-8">
+      <p className="font-display text-xl tracking-[0.08em] text-gold">Нить дня</p>
       <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-sand sm:text-4xl">Одна карта на сутки</h2>
       <div className="gold-rule mt-4 w-16" />
       <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
         Касанием откройте карту дня. Полотно скажет, чего ждать, что сделать и чего не делать до полуночи.
       </p>
       {settled ? (
-        <div className="mx-auto mt-6 aspect-card w-36 overflow-hidden sm:w-40">
-          <CardFace key={card.number} card={card} className="size-full" showTitle={false} />
+        <div className="bind-stage mx-auto mt-6 w-36 sm:w-40">
+          <div className="aspect-card overflow-hidden">
+            <CardFace key={card.number} card={card} className="size-full" showTitle={false} />
+          </div>
         </div>
       ) : (
-        <button type="button" onClick={flip} className="mx-auto mt-6 block w-36 sm:w-40" aria-label="Открыть карту дня">
+        <button type="button" onClick={flip} className="bind-stage mx-auto mt-6 block w-36 sm:w-40" aria-label="Открыть карту дня">
           <div className="flip-scene aspect-card w-full">
             <div className={cn("flip-card", open && "is-open")}>
               <div className="flip-face">
@@ -216,8 +218,17 @@ export function ThreadOfDay() {
               </div>
             </div>
           </div>
+          <svg className={cn("bind-thread", open && "is-loose")} viewBox="0 0 100 150" fill="none" aria-hidden="true">
+            <path d="M12 18 C 38 8, 62 28, 88 16 S 92 70, 78 92 S 28 128, 18 142" stroke="#6B1C1C" strokeWidth="3.2" />
+            <path d="M22 8 C 8 52, 90 58, 70 148" stroke="#8B2A2A" strokeWidth="2.2" />
+          </svg>
         </button>
       )}
+      {!open ? (
+        <button type="button" onClick={flip} className="btn-cloth mt-7">
+          Открыть карту
+        </button>
+      ) : null}
       {open ? (
         <p className="mt-5 text-center font-display text-2xl tracking-[0.08em] text-sand">
           {cardDisplayTitle(card)}

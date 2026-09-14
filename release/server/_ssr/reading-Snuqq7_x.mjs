@@ -3,13 +3,13 @@ import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].
 import { S as require_jsx_runtime, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { a as isCardFilled, n as cardDisplayTitle } from "./types-BvDlfgVm.mjs";
 import { C as tapPulse, _ as playRustle, a as IconCutBack, h as cn, v as playThud, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { a as searchFromIds, i as saveLastReading, n as idsFromSearch, t as AppShell } from "./app-shell-CNkh6CD4.mjs";
+import { a as searchFromIds, i as saveLastReading, n as idsFromSearch, t as AppShell } from "./app-shell-XizQNRfG.mjs";
 import { t as Button } from "./button-Cmdjd3ge.mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { a as weaveReading, c as spreadById, i as SPREADS, o as Route$5, s as CardBack } from "./router-BavX7j7-.mjs";
+import { a as weaveReading, c as spreadById, i as SPREADS, o as Route$5, s as CardBack } from "./router-Ypy5BRdx.mjs";
 import { t as LivingMedia } from "./living-media-BcSSF-SS.mjs";
 import { t as addJournalEntry } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/reading-iLbP-gyU.js
+//#region node_modules/.nitro/vite/services/ssr/assets/reading-Snuqq7_x.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var SPREAD_PROP = {
@@ -33,7 +33,7 @@ function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }) {
 	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("form", {
 		action: "/reading",
 		method: "get",
-		className: "reading-ink relative z-20 w-full min-w-0 pb-8",
+		className: "spread-form relative z-20 w-full min-w-0 pb-8",
 		children: [
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("input", {
 				type: "hidden",
@@ -45,8 +45,34 @@ function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }) {
 				name: "s",
 				value: picked
 			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ol", {
+				className: "spread-rail",
+				"aria-hidden": "true",
+				children: SPREADS.map((spread, index) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", {
+					className: cn(picked === spread.id && "is-on"),
+					children: String(index + 1).padStart(2, "0")
+				}, spread.id))
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("header", {
+				className: "spread-head",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "lead",
+						children: "Нити, что связывают времена"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("h1", {
+						className: "display-title",
+						children: "Выбери нить"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+						className: "mt-3 max-w-md text-sm leading-[1.65] text-muted-foreground",
+						children: "Каждая нить — это путь. Здесь живут смыслы, вопросы и ответы."
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule mt-5 w-20" })
+				]
+			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("label", {
-				className: "block",
+				className: "mt-8 block",
 				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
 					className: "sr-only",
 					children: "Вопрос к колоде"
@@ -57,43 +83,50 @@ function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }) {
 					defaultValue: defaultQuestion,
 					placeholder: "Вопрос прозвучит у кросен",
 					autoComplete: "off",
-					className: "field-ink h-12 w-full px-0 text-base text-foreground"
+					className: "field-ink h-12 w-full px-0 text-base text-sand"
 				})]
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-				className: "rushnyk-bed mt-4",
+				className: "spread-bed mt-5",
 				role: "radiogroup",
 				"aria-label": "Расклад",
-				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", { children: SPREADS.map((spread) => {
-					const on = picked === spread.id;
-					return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
-						type: "button",
-						onClick: () => setPicked(spread.id),
-						"aria-pressed": on,
-						className: cn("spread-row", on && "is-on"),
-						children: [
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-								src: SPREAD_PROP[spread.id],
-								alt: "",
-								className: "spread-prop"
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
-								className: "min-w-0 flex-1",
-								children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "block font-display text-[1.45rem] leading-tight",
-									children: spread.title
-								}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-									className: "spread-hint mt-1 block text-sm",
-									children: spread.hint
-								})]
-							}),
-							/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-								className: "spread-count shrink-0 text-xs",
-								children: countLabel(spread.count)
-							})
-						]
-					}) }, spread.id);
-				}) }), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("ul", {
+					className: "flex flex-col gap-2",
+					children: SPREADS.map((spread, index) => {
+						const on = picked === spread.id;
+						return /* @__PURE__ */ (0, import_jsx_runtime.jsx)("li", { children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("button", {
+							type: "button",
+							onClick: () => setPicked(spread.id),
+							"aria-pressed": on,
+							className: cn("spread-row", on && "is-on"),
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "spread-num",
+									children: String(index + 1).padStart(2, "0")
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+									src: SPREAD_PROP[spread.id],
+									alt: "",
+									className: "spread-prop"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("span", {
+									className: "min-w-0 flex-1",
+									children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "block font-display text-[1.45rem] leading-tight tracking-[0.06em]",
+										children: spread.title
+									}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+										className: "spread-hint mt-1 block text-sm",
+										children: spread.hint
+									})]
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
+									className: "spread-count shrink-0 text-xs tracking-[0.12em]",
+									children: countLabel(spread.count)
+								})
+							]
+						}) }, spread.id);
+					})
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "spread-roles mt-3 text-sm",
 					children: active.roles.join(" · ")
 				})]

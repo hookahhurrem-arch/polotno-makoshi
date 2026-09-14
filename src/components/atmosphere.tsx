@@ -13,7 +13,6 @@ export function Atmosphere() {
       <div className="archive-field" />
       <div className="archive-depth" />
       {tier !== "min" ? <div className="archive-fiber" /> : null}
-      <div className="archive-grid" />
       <div className="archive-well" />
       <div className="archive-vignette" />
     </div>

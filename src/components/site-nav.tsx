@@ -34,12 +34,13 @@ export function SiteNav() {
 
   return (
     <>
-      <header className="sticky top-0 z-30 border-b border-[#2a211e] bg-[#0b0908]/94 backdrop-blur-[16px]">
-        <div className="mx-auto flex h-14 max-w-6xl items-center justify-between px-7 md:px-12">
-          <Link to="/" className="font-display text-lg tracking-[0.08em] text-sand">
-            {name}
+      <header className="site-mast sticky top-0 z-30">
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-6 md:px-12">
+          <Link to="/" className="brand-mark">
+            <span className="brand-name">{name}</span>
+            <span className="brand-sub">Колода смыслов</span>
           </Link>
-          <div className="flex items-center gap-2">
+          <div className="flex items-center gap-1">
             <button
               type="button"
               onClick={() => {
@@ -49,7 +50,7 @@ export function SiteNav() {
                 if (next) void startCrackle();
                 else stopCrackle();
               }}
-              className="px-2 py-1 text-sand"
+              className="px-2 py-2 text-sand"
               aria-pressed={sound}
               aria-label={sound ? "Выключить звук" : "Включить звук"}
               title={sound ? "Звук включён" : "Звук выключен"}
@@ -84,7 +85,7 @@ export function SiteNav() {
         </div>
       </header>
 
-      <nav className="site-dock fixed inset-x-0 bottom-0 z-30 border-t border-[#2a211e] pb-[env(safe-area-inset-bottom)] md:hidden">
+      <nav className="site-dock fixed inset-x-0 bottom-0 z-30 pb-[env(safe-area-inset-bottom)] md:hidden">
         <ul className="grid grid-cols-5">
           {ITEMS.map((item) => {
             const active =
@@ -97,8 +98,9 @@ export function SiteNav() {
                 <Link
                   to={item.to}
                   search={item.to === "/reading" && last ? last : undefined}
+                  data-active={active}
                   className={cn(
-                    "flex min-h-14 flex-col items-center justify-center gap-1 font-[family-name:var(--font-ui)] text-[10px] tracking-[0.12em]",
+                    "dock-item flex min-h-14 flex-col items-center justify-center gap-1 font-[family-name:var(--font-ui)] text-[10px] tracking-[0.12em]",
                     active ? "text-sand" : "text-muted-foreground",
                   )}
                 >
