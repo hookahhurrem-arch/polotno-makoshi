@@ -1,4 +1,4 @@
-//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-C7ebL_tm.js
+//#region node_modules/.nitro/vite/services/ssr/assets/_tanstack-start-manifest_v-DECrAWti.js
 var tsrStartManifest = () => ({ routes: {
 	__root__: {
 		filePath: "/workspace/src/routes/__root.tsx",
@@ -14,19 +14,19 @@ var tsrStartManifest = () => ({ routes: {
 			"/studio/$number",
 			"/studio/"
 		],
-		preloads: ["/assets/index-C1hid3y7.js", "/assets/store-B2TCFSvO.js"],
+		preloads: ["/assets/index-B1ZlrKJP.js", "/assets/store-B2TCFSvO.js"],
 		scripts: [{ attrs: {
 			type: "module",
 			async: !0,
-			src: "/assets/index-C1hid3y7.js"
+			src: "/assets/index-B1ZlrKJP.js"
 		} }]
 	},
 	"/": {
 		filePath: "/workspace/src/routes/index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/routes-ssw9YndG.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/routes-B2tl9gVc.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/card-face-C7DrQdGk.js",
 			"/assets/journal-ClZiULEo.js"
 		]
@@ -35,8 +35,8 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/about.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/about-DMvy9ZVi.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/about-Cfdw2zZ4.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/button-eBZO85Tg.js"
 		]
 	},
@@ -44,17 +44,17 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/deck.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/deck-oIjKytOP.js",
-			"/assets/app-shell-CXFeoTJ0.js",
-			"/assets/card-tile-BvZDcTdQ.js"
+			"/assets/deck-B8CdvuWw.js",
+			"/assets/app-shell-AdQ3Eu73.js",
+			"/assets/card-tile-D7YbJ0ie.js"
 		]
 	},
 	"/journal": {
 		filePath: "/workspace/src/routes/journal.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/journal-CZJwS0pf.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/journal-BpKj2FvB.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/journal-ClZiULEo.js"
 		]
 	},
@@ -62,8 +62,8 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/reading.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/reading-20Q6XZ7p.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/reading-WxiYquWF.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/button-eBZO85Tg.js",
 			"/assets/living-media-i1zn8bRL.js",
 			"/assets/journal-ClZiULEo.js"
@@ -73,8 +73,8 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/card.$number.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/card._number-DbYOeZUd.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/card._number-fdTX2msj.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/button-eBZO85Tg.js",
 			"/assets/living-media-i1zn8bRL.js"
 		]
@@ -83,22 +83,22 @@ var tsrStartManifest = () => ({ routes: {
 		filePath: "/workspace/src/routes/studio.$number.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/studio._number-DzzXDnlR.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/studio._number-DPQEVg3v.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/button-eBZO85Tg.js",
 			"/assets/living-media-i1zn8bRL.js",
-			"/assets/textarea-DRxkQHRQ.js"
+			"/assets/textarea-CIrxukrZ.js"
 		]
 	},
 	"/studio/": {
 		filePath: "/workspace/src/routes/studio.index.tsx",
 		children: void 0,
 		preloads: [
-			"/assets/studio.index-BMhwYdxq.js",
-			"/assets/app-shell-CXFeoTJ0.js",
+			"/assets/studio.index-Cvi20JWL.js",
+			"/assets/app-shell-AdQ3Eu73.js",
 			"/assets/button-eBZO85Tg.js",
-			"/assets/card-tile-BvZDcTdQ.js",
-			"/assets/textarea-DRxkQHRQ.js"
+			"/assets/card-tile-D7YbJ0ie.js",
+			"/assets/textarea-CIrxukrZ.js"
 		]
 	}
 } });

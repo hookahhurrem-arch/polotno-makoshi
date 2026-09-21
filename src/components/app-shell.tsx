@@ -19,7 +19,7 @@ export function AppShell({
     <div className="relative z-10 min-h-dvh text-foreground">
       <Atmosphere />
       {scene ? <SceneStage name={scene} /> : null}
-      <StillLife candle={scene === "table"} yarn={scene === "chamber"} />
+      <StillLife candle={scene === "table"} yarn={false} />
       <SiteNav />
       <div className={cn("chamber-page relative z-10 mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col px-6 pb-32 pt-8 md:px-12 md:pb-16 md:pt-12", className)}>
         <div className="flex-1">{children}</div>

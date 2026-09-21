@@ -2,7 +2,7 @@ import { o as __toESM } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
 import { S as require_jsx_runtime, f as useRouterState, y as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { S as stopCrackle, b as soundEnabled, c as IconHasp, f as IconSpindle, h as cn, i as IconBookClasp, l as IconHearth, m as IconWindow, p as IconThreadKnot, w as useOracleStore, x as startCrackle, y as setSoundEnabled } from "./store-okPazmL_.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-XizQNRfG.js
+//#region node_modules/.nitro/vite/services/ssr/assets/app-shell-C-n3DXup.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function fxTier() {
@@ -328,7 +328,7 @@ function AppShell({ children, className, scene }) {
 			scene ? /* @__PURE__ */ (0, import_jsx_runtime.jsx)(SceneStage, { name: scene }) : null,
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(StillLife, {
 				candle: scene === "table",
-				yarn: scene === "chamber"
+				yarn: false
 			}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SiteNav, {}),
 			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
@@ -348,4 +348,4 @@ function AppShell({ children, className, scene }) {
 	});
 }
 //#endregion
-export { searchFromIds as a, saveLastReading as i, idsFromSearch as n, loadLastReading as r, AppShell as t };
+export { saveLastReading as a, loadLastReading as i, fxTier as n, searchFromIds as o, idsFromSearch as r, AppShell as t };

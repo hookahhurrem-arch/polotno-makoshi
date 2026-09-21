@@ -5,34 +5,13 @@ import { n as createServerFn } from "./ssr.mjs";
 import { n as cardDisplayTitle, s as withDayFields } from "./types-BvDlfgVm.mjs";
 import { a as number, o as object, s as string } from "../_libs/zod.mjs";
 import { C as tapPulse, g as createSsrRpc, h as cn, p as IconThreadKnot, v as playThud, w as useOracleStore } from "./store-okPazmL_.mjs";
-import { t as AppShell } from "./app-shell-XizQNRfG.mjs";
-import { s as CardBack } from "./router-Ypy5BRdx.mjs";
+import { n as fxTier, t as AppShell } from "./app-shell-C-n3DXup.mjs";
+import { s as CardBack } from "./router-7z9xZgdS.mjs";
 import { t as CardFace } from "./card-face-CYlRq-G0.mjs";
 import { r as rememberDayThread } from "./journal-DP38_61i.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/routes-BWB1NuJO.js
+//#region node_modules/.nitro/vite/services/ssr/assets/routes--xr_SNxl.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
-function SpindleButton({ to = "/reading", label = "Сплести нити" }) {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(Link, {
-		to,
-		className: "hero-weave",
-		children: [
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-				src: "/scenes/spindle.webp",
-				alt: "",
-				className: "hero-spindle"
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: "hero-title",
-				children: label
-			}),
-			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("span", {
-				className: "hero-caption",
-				children: "Коснитесь веретена — нить размотается к кроснам."
-			})
-		]
-	});
-}
 var STORAGE = "makosh-thread-of-day-v4";
 var SEED_KEY = "makosh-thread-person";
 function localDateKey(date = /* @__PURE__ */ new Date()) {
@@ -461,21 +440,342 @@ function ThreadOfDay() {
 		]
 	});
 }
-function Home() {
-	return /* @__PURE__ */ (0, import_jsx_runtime.jsx)(AppShell, {
-		className: "home-shell !pt-2",
-		scene: "chamber",
-		children: /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
-			className: "home-stage",
-			children: [
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+var VIEW = "0 0 1500 2195";
+var FATE = "M752 1008 C 748 1050, 728 1082, 736 1118 C 748 1162, 786 1190, 774 1232 C 760 1274, 716 1308, 740 1352 C 768 1400, 808 1438, 780 1484 C 750 1532, 796 1574, 770 1618 C 744 1664, 708 1708, 736 1752 C 764 1792, 798 1828, 754 1864 C 726 1888, 742 1904, 750 1912";
+var HAND = "M708 870 C 748 856, 786 846, 812 840 C 804 878, 782 922, 768 962 C 758 986, 752 1000, 752 1008";
+var DUST = [
+	[
+		180,
+		240,
+		19,
+		.9
+	],
+	[
+		320,
+		480,
+		24,
+		.7
+	],
+	[
+		1280,
+		300,
+		21,
+		1.1
+	],
+	[
+		1180,
+		620,
+		27,
+		.8
+	],
+	[
+		210,
+		900,
+		22,
+		1
+	],
+	[
+		1340,
+		980,
+		25,
+		.75
+	],
+	[
+		90,
+		1280,
+		20,
+		1.2
+	],
+	[
+		1400,
+		1400,
+		28,
+		.85
+	],
+	[
+		260,
+		1600,
+		23,
+		.95
+	],
+	[
+		1220,
+		1720,
+		26,
+		.7
+	],
+	[
+		400,
+		200,
+		18,
+		1.05
+	],
+	[
+		1100,
+		180,
+		22,
+		.8
+	],
+	[
+		160,
+		700,
+		21,
+		1.15
+	],
+	[
+		1360,
+		760,
+		19,
+		.9
+	],
+	[
+		80,
+		1750,
+		24,
+		.78
+	],
+	[
+		1420,
+		1900,
+		20,
+		1
+	],
+	[
+		980,
+		120,
+		17,
+		.88
+	],
+	[
+		520,
+		160,
+		23,
+		.72
+	]
+];
+function WeaverHero() {
+	const [tier, setTier] = (0, import_react.useState)("lite");
+	const [pulse, setPulse] = (0, import_react.useState)(false);
+	(0, import_react.useEffect)(() => {
+		setTier(fxTier());
+	}, []);
+	const live = tier !== "min";
+	const runPulse = () => {
+		if (!live || pulse) return;
+		setPulse(true);
+		window.setTimeout(() => setPulse(false), 780);
+	};
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)("section", {
+		className: "weaver-hero",
+		children: [
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("svg", {
+				className: "weaver-scene",
+				viewBox: VIEW,
+				preserveAspectRatio: "xMidYMid slice",
+				"aria-hidden": "true",
+				children: [
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("defs", { children: [
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+							id: "fateGlow",
+							x1: "0",
+							y1: "0",
+							x2: "0",
+							y2: "1",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "0%",
+									stopColor: "#e8c07a"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "45%",
+									stopColor: "#c45a4a"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "100%",
+									stopColor: "#6b1c1c"
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("filter", {
+							id: "fateBlur",
+							x: "-20%",
+							y: "-8%",
+							width: "140%",
+							height: "116%",
+							children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("feGaussianBlur", { stdDeviation: tier === "full" ? 3.2 : 1.6 })
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("radialGradient", {
+							id: "candleCore",
+							cx: "50%",
+							cy: "50%",
+							r: "50%",
+							children: [
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "0%",
+									stopColor: "#e8c07a",
+									stopOpacity: "0.95"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "55%",
+									stopColor: "#c45a4a",
+									stopOpacity: "0.28"
+								}),
+								/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+									offset: "100%",
+									stopColor: "#e8c07a",
+									stopOpacity: "0"
+								})
+							]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+							id: "topVeil",
+							x1: "0",
+							y1: "0",
+							x2: "0",
+							y2: "1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "0%",
+								stopColor: "#070605",
+								stopOpacity: "0.72"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "100%",
+								stopColor: "#070605",
+								stopOpacity: "0"
+							})]
+						}),
+						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("linearGradient", {
+							id: "botVeil",
+							x1: "0",
+							y1: "0",
+							x2: "0",
+							y2: "1",
+							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "0%",
+								stopColor: "#070605",
+								stopOpacity: "0"
+							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("stop", {
+								offset: "100%",
+								stopColor: "#070605",
+								stopOpacity: "0.82"
+							})]
+						})
+					] }),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("image", {
+						href: "/scenes/weaver.webp",
+						width: "1500",
+						height: "2195"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						x: "0",
+						y: "0",
+						width: "1500",
+						height: "320",
+						fill: "url(#topVeil)"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						x: "0",
+						y: "1860",
+						width: "1500",
+						height: "335",
+						fill: "url(#botVeil)"
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+						className: cn("weaver-fate", live && "is-live", pulse && "is-pulse"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: FATE,
+							pathLength: 1,
+							fill: "none",
+							stroke: "url(#fateGlow)",
+							strokeWidth: "14",
+							strokeLinecap: "round",
+							filter: tier === "full" ? "url(#fateBlur)" : void 0,
+							className: "fate-glow"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: FATE,
+							pathLength: 1,
+							fill: "none",
+							stroke: "url(#fateGlow)",
+							strokeWidth: "3.2",
+							strokeLinecap: "round",
+							className: "fate-core"
+						})]
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("g", {
+						className: cn("weaver-hand", live && "is-live"),
+						children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("path", {
+							d: HAND,
+							fill: "none",
+							stroke: "#8b2a2a",
+							strokeWidth: "2.4",
+							strokeLinecap: "round"
+						})
+					}),
+					/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("g", {
+						className: cn("weaver-candle", live && "is-live"),
+						children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+							cx: "1036",
+							cy: "758",
+							r: "54",
+							fill: "url(#candleCore)",
+							className: "candle-halo"
+						}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+							cx: "1036",
+							cy: "758",
+							r: "7",
+							fill: "#e8c07a",
+							className: "candle-wick"
+						})]
+					}),
+					live ? DUST.map(([x, y, dur, s], i) => /* @__PURE__ */ (0, import_jsx_runtime.jsx)("circle", {
+						className: "weaver-dust",
+						cx: x,
+						cy: y,
+						r: s,
+						fill: "#e8c07a",
+						style: {
+							animationDuration: `${dur}s`,
+							animationDelay: `${-i * 1.3}s`
+						}
+					}, i)) : null,
+					/* @__PURE__ */ (0, import_jsx_runtime.jsx)("rect", {
+						x: "560",
+						y: "990",
+						width: "390",
+						height: "930",
+						fill: "transparent",
+						className: "cloth-hit",
+						onPointerDown: runPulse
+					})
+				]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
+				className: "weaver-copy weaver-copy-top",
+				children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 					className: "home-aside",
 					children: "Сто восемь нитей. Одна ткань судьбы."
-				}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(SpindleButton, {}),
-				/* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThreadOfDay, {})
-			]
-		})
+				}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Link, {
+					to: "/reading",
+					className: "hero-title weaver-cta",
+					children: "Сплести нити"
+				})]
+			}),
+			/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+				className: "weaver-copy weaver-copy-bot",
+				children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
+					className: "hero-caption",
+					children: "Коснитесь полотна — нить пройдёт от колыбели до холма."
+				})
+			})
+		]
+	});
+}
+function Home() {
+	return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(AppShell, {
+		className: "home-shell !max-w-none !px-0 !pt-0",
+		children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)(WeaverHero, {}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", {
+			className: "px-6 md:px-12",
+			children: /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ThreadOfDay, {})
+		})]
 	});
 }
 //#endregion
