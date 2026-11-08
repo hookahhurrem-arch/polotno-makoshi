@@ -1,0 +1,13 @@
+{
+  "name": "Полотно Макоши",
+  "short_name": "Полотно Макоши",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "background_color": "#070605",
+  "theme_color": "#070605",
+  "lang": "ru",
+  "icons": [
+    { "src": "/favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}

@@ -10,7 +10,7 @@ import { WeaveRitual } from "@/components/weave-ritual";
 import { WeaverPanel } from "@/components/weaver-panel";
 import { Button } from "@/components/ui/button";
 import { addJournalEntry } from "@/lib/oracle/journal";
-import { idsFromSearch, saveLastReading, searchFromIds } from "@/lib/oracle/last-reading";
+import { idsFromSearch, loadLastReading, loadStashedQuestion, publicSearch, saveLastReading, searchFromIds, stashQuestion } from "@/lib/oracle/last-reading";
 import { shareSpread } from "@/lib/oracle/share";
 import { playRustle, playThud, tapPulse } from "@/lib/oracle/sound";
 import { parseSpreadId, spreadById } from "@/lib/oracle/spreads";
@@ -90,7 +90,8 @@ function ReadingPage() {
   const def = spreadById(search.s);
   const count = def.count;
   const kind = def.id;
-  const question = search.q?.trim() ?? "";
+  const urlQuestion = search.q?.trim() ?? "";
+  const [question, setQuestion] = useState(() => urlQuestion || loadStashedQuestion() || loadLastReading()?.q || "");
   const filledCount = cards.filter(isCardFilled).length;
   const urlIds = idsFromSearch(search).slice(0, count);
 
@@ -99,6 +100,8 @@ function ReadingPage() {
   const [weaving, setWeaving] = useState("");
   const [round, setRound] = useState(0);
   const [ritual, setRitual] = useState(false);
+  const [shareQuestion, setShareQuestion] = useState(false);
+  const [shareText, setShareText] = useState(false);
   const [opened, setOpened] = useState<boolean[]>(() => Array.from({ length: count }, () => false));
 
   const lockedIds = urlIds.length === count ? urlIds : localIds?.length === count ? localIds : [];
@@ -106,11 +109,20 @@ function ReadingPage() {
   const finishRitual = useCallback(() => setRitual(false), []);
 
   useEffect(() => {
+    if (!urlQuestion) return;
+    stashQuestion(urlQuestion);
+    setQuestion(urlQuestion);
+    const { q: _gone, ...rest } = search;
+    void navigate({ to: "/reading", search: rest, replace: true });
+  }, [urlQuestion, navigate, search]);
+
+  useEffect(() => {
     if (!search.go) return;
+    if (question) stashQuestion(question);
     if (lockedIds.length === count) {
       saveLastReading(searchFromIds(kind, question, lockedIds));
       if (urlIds.length !== count && localIds?.length === count) {
-        void navigate({ to: "/reading", search: searchFromIds(kind, question, localIds), replace: true });
+        void navigate({ to: "/reading", search: publicSearch(searchFromIds(kind, question, localIds)), replace: true });
       }
       return;
     }
@@ -123,7 +135,7 @@ function ReadingPage() {
     tapPulse(12);
     const next = searchFromIds(kind, question, picked);
     saveLastReading(next);
-    void navigate({ to: "/reading", search: next, replace: true });
+    void navigate({ to: "/reading", search: publicSearch(next), replace: true });
   }, [search.go, count, lockedIds.length, urlIds.length, localIds, filledCount, cards, question, navigate, kind]);
 
   const drawn = useMemo(() => {
@@ -161,11 +173,12 @@ function ReadingPage() {
     try {
       await shareSpread({
         deck: "Полотно Макоши",
-        question,
+        question: shareQuestion ? question : "",
         cards: drawn,
-        weaving,
+        weaving: shareText ? weaving : "",
       });
-    } catch {
+    } catch (error) {
+      if (error instanceof DOMException && error.name === "AbortError") return;
       toast("Не удалось поделиться");
     }
   };
@@ -181,7 +194,7 @@ function ReadingPage() {
     playRustle();
     const next = searchFromIds(kind, question, picked);
     saveLastReading(next);
-    void navigate({ to: "/reading", search: next, replace: true });
+    void navigate({ to: "/reading", search: publicSearch(next), replace: true });
   };
 
   const openCard = (index: number) => {
@@ -289,6 +302,14 @@ function ReadingPage() {
                   <Button onClick={save} disabled={saved}>
                     {saved ? "В дневнике" : "Сохранить в дневник"}
                   </Button>
+                  <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <input type="checkbox" checked={shareQuestion} onChange={(event) => setShareQuestion(event.target.checked)} />
+                    Показать вопрос
+                  </label>
+                  <label className="flex items-center gap-2 text-sm text-muted-foreground">
+                    <input type="checkbox" checked={shareText} onChange={(event) => setShareText(event.target.checked)} />
+                    Показать трактовку
+                  </label>
                   <Button variant="outline" onClick={() => void share()}>
                     Поделиться
                   </Button>

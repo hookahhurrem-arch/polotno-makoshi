@@ -8,7 +8,7 @@ import {
   IconThreadKnot,
   IconWindow,
 } from "@/components/brand-icons";
-import { loadLastReading, type LastReading } from "@/lib/oracle/last-reading";
+import { loadLastReading, publicSearch, type LastReading } from "@/lib/oracle/last-reading";
 import { setSoundEnabled, soundEnabled, startCrackle, stopCrackle } from "@/lib/oracle/sound";
 import { useOracleStore } from "@/lib/oracle/store";
 import { cn } from "@/lib/utils";
@@ -69,7 +69,7 @@ export function SiteNav() {
                   <Link
                     key={item.to}
                     to={item.to}
-                    search={item.to === "/reading" && last ? last : undefined}
+                    search={item.to === "/reading" && last ? publicSearch(last) : undefined}
                     data-active={active}
                     className={cn(
                       "nav-thread px-3 py-2 text-sm",
@@ -97,10 +97,10 @@ export function SiteNav() {
               <li key={item.to}>
                 <Link
                   to={item.to}
-                  search={item.to === "/reading" && last ? last : undefined}
+                  search={item.to === "/reading" && last ? publicSearch(last) : undefined}
                   data-active={active}
                   className={cn(
-                    "dock-item flex min-h-14 flex-col items-center justify-center gap-1 font-[family-name:var(--font-ui)] text-[10px] tracking-[0.12em]",
+                    "dock-item flex min-h-14 flex-col items-center justify-center gap-1 font-[family-name:var(--font-ui)] text-xs tracking-[0.08em]",
                     active ? "text-sand" : "text-muted-foreground",
                   )}
                 >

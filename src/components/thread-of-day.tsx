@@ -198,7 +198,7 @@ export function ThreadOfDay() {
       <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-sand sm:text-4xl">Одна карта на сутки</h2>
       <div className="gold-rule mt-4 w-16" />
       <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-        Касанием откройте карту дня. Полотно скажет, чего ждать, что сделать и чего не делать до полуночи.
+        Касанием откройте карту дня. Это символический фокус суток и повод заметить своё, а не обещание событий до полуночи.
       </p>
       {settled ? (
         <div className="bind-stage mx-auto mt-6 w-36 sm:w-40">

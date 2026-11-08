@@ -39,8 +39,17 @@ export async function shareSpread(input: {
   cards: OracleCard[];
   weaving: string;
 }): Promise<void> {
+  const showQuestion = input.question.trim().length > 0;
+  const showWeaving = input.weaving.trim().length > 0;
+  const count = input.cards.length;
+  const cols = count <= 1 ? 1 : count <= 4 ? 2 : 3;
+  const rows = Math.ceil(count / cols);
+  const cardW = cols === 1 ? 420 : cols === 2 ? 340 : 250;
+  const cardH = Math.round((cardW * 3) / 2);
+  const gap = 28;
+  const gridH = rows * (cardH + 78);
+  const h = 280 + (showQuestion ? 150 : 0) + gridH + (showWeaving ? 380 : 40) + 140;
   const w = 1080;
-  const h = 1920;
   const canvas = document.createElement("canvas");
   canvas.width = w;
   canvas.height = h;
@@ -71,22 +80,10 @@ export async function shareSpread(input: {
   ctx.fillStyle = "#C9BFB5";
   ctx.font = "32px Manrope, sans-serif";
   ctx.letterSpacing = "0px";
-  const afterQ = wrapText(
-    ctx,
-    input.question ? `«${input.question}»` : "Без вопроса",
-    w / 2,
-    280,
-    w - 180,
-    44,
-    3,
-  );
+  const afterQ = showQuestion
+    ? wrapText(ctx, `«${input.question}»`, w / 2, 280, w - 180, 44, 3)
+    : 230;
 
-  const count = input.cards.length;
-  const cols = count <= 1 ? 1 : count <= 4 ? 2 : 3;
-  const rows = Math.ceil(count / cols);
-  const cardW = cols === 1 ? 360 : cols === 2 ? 300 : 240;
-  const cardH = (cardW * 3) / 2;
-  const gap = 28;
   const gridW = cols * cardW + (cols - 1) * gap;
   const startX = (w - gridW) / 2;
   let startY = afterQ + 40;
@@ -112,11 +109,13 @@ export async function shareSpread(input: {
     ctx.fillText(cardDisplayTitle(card), x + cardW / 2, y + cardH + 36);
   });
 
-  const textY = startY + rows * (cardH + 70) + 20;
-  ctx.fillStyle = "#C9BFB5";
-  ctx.font = "30px Manrope, sans-serif";
-  ctx.textAlign = "left";
-  wrapText(ctx, input.weaving.replace(/\s+/g, " ").trim(), 90, textY, w - 180, 42, 10);
+  if (showWeaving) {
+    const textY = startY + rows * (cardH + 70) + 20;
+    ctx.fillStyle = "#C9BFB5";
+    ctx.font = "30px Manrope, sans-serif";
+    ctx.textAlign = "left";
+    wrapText(ctx, input.weaving.replace(/\s+/g, " ").trim(), 90, textY, w - 180, 42, 8);
+  }
 
   ctx.fillStyle = "#D8C08A";
   ctx.font = "22px Manrope, sans-serif";

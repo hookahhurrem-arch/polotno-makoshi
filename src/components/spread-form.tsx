@@ -1,5 +1,7 @@
-import { useState } from "react";
-import { SPREADS } from "@/lib/oracle/spreads";
+import { useState, type FormEvent } from "react";
+import { useNavigate } from "@tanstack/react-router";
+import { stashQuestion } from "@/lib/oracle/last-reading";
+import { parseSpreadId, SPREADS } from "@/lib/oracle/spreads";
 import { SPREAD_PROP } from "@/lib/scenes";
 import { cn } from "@/lib/utils";
 
@@ -17,14 +19,24 @@ type SpreadFormProps = {
 };
 
 export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: SpreadFormProps) {
+  const navigate = useNavigate();
   const [picked, setPicked] = useState(defaultSpread);
+  const [question, setQuestion] = useState(defaultQuestion);
   const active = SPREADS.find((s) => s.id === picked) ?? SPREADS[1]!;
 
-  return (
-    <form action="/reading" method="get" className="spread-form relative z-20 w-full min-w-0 pb-8">
-      <input type="hidden" name="go" value="1" />
-      <input type="hidden" name="s" value={picked} />
+  const submit = (event: FormEvent) => {
+    event.preventDefault();
+    const text = question.trim();
+    if (text.length < 8) return;
+    stashQuestion(text);
+    void navigate({
+      to: "/reading",
+      search: { s: parseSpreadId(picked), go: true },
+    });
+  };
 
+  return (
+    <form onSubmit={submit} className="spread-form relative z-20 w-full min-w-0 pb-8">
       <ol className="spread-rail" aria-hidden="true">
         {SPREADS.map((spread, index) => (
           <li key={spread.id} className={cn(picked === spread.id && "is-on")}>
@@ -43,15 +55,15 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
       </header>
 
       <label className="mt-8 block">
-        <span className="sr-only">Вопрос к колоде</span>
+        <span className="mb-2 block text-sm text-sand">Вопрос к колоде</span>
         <input
-          name="q"
           required
           minLength={8}
-          defaultValue={defaultQuestion}
+          value={question}
+          onChange={(event) => setQuestion(event.target.value)}
           placeholder="Вопрос прозвучит у кросен"
           autoComplete="off"
-          className="field-ink h-12 w-full px-0 text-base text-sand"
+          className="field-ink h-12 w-full px-1 text-base text-sand"
         />
       </label>
 
@@ -63,8 +75,9 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
               <li key={spread.id}>
                 <button
                   type="button"
+                  role="radio"
+                  aria-checked={on}
                   onClick={() => setPicked(spread.id)}
-                  aria-pressed={on}
                   className={cn("spread-row", on && "is-on")}
                 >
                   <span className="spread-num">{String(index + 1).padStart(2, "0")}</span>
@@ -79,10 +92,10 @@ export function SpreadForm({ defaultQuestion = "", defaultSpread = "three" }: Sp
             );
           })}
         </ul>
-        <p className="spread-roles mt-3 text-sm">{active.roles.join(" · ")}</p>
+        {active.roles.length > 1 ? <p className="spread-roles mt-3 text-sm">{active.roles.join(" · ")}</p> : null}
       </div>
 
-      <button type="submit" className="btn-cloth sticky bottom-[calc(4.6rem+env(safe-area-inset-bottom))] z-20 mt-8">
+      <button type="submit" className="btn-cloth sticky bottom-[calc(5.4rem+env(safe-area-inset-bottom))] z-20 mt-8">
         Сплести нити
       </button>
     </form>

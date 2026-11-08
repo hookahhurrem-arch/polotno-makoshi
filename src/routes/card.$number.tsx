@@ -5,7 +5,7 @@ import { AppShell } from "@/components/app-shell";
 import { CardSwipe } from "@/components/card-swipe";
 import { LivingMedia } from "@/components/living-media";
 import { Button } from "@/components/ui/button";
-import { loadLastReading } from "@/lib/oracle/last-reading";
+import { loadLastReading, publicSearch } from "@/lib/oracle/last-reading";
 import { DECK_SIZE, cardDisplayTitle, emptyCard, padCardNumber } from "@/lib/oracle/types";
 import { useOracleStore } from "@/lib/oracle/store";
 
@@ -13,6 +13,21 @@ export const Route = createFileRoute("/card/$number")({
   beforeLoad: ({ params }) => {
     const n = Number(params.number);
     if (!Number.isInteger(n) || n < 1 || n > DECK_SIZE) throw notFound();
+  },
+  head: ({ params }) => {
+    const n = Number(params.number);
+    const title = `Карта ${String(n).padStart(3, "0")} | Полотно Макоши`;
+    const description = `Авторское значение карты ${n} колоды Полотно Макоши.`;
+    return {
+      meta: [
+        { title },
+        { name: "description", content: description },
+        { property: "og:title", content: title },
+        { property: "og:description", content: description },
+        { property: "og:url", content: `https://temnoiar.ru/card/${n}` },
+      ],
+      links: [{ rel: "canonical", href: `https://temnoiar.ru/card/${n}` }],
+    };
   },
   component: CardPage,
 });
@@ -77,7 +92,7 @@ function CardPage() {
             {last ? (
               <Link
                 to="/reading"
-                search={last}
+                search={publicSearch(last)}
                 className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
               >
                 <IconCutBack />
@@ -110,7 +125,12 @@ function CardPage() {
               </ul>
             ) : null}
             {card.description ? (
-              <p className="mt-6 whitespace-pre-line text-base leading-relaxed">{card.description}</p>
+              <>
+                <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
+                  Авторская символическая интерпретация, не доказательство событий, диагноза или чужого воздействия.
+                </p>
+                <p className="mt-4 whitespace-pre-line text-base leading-relaxed">{card.description}</p>
+              </>
             ) : (
               <p className="mt-6 text-sm leading-relaxed text-muted-foreground">
                 Эта нить ещё молчит. Текст придёт, когда Пряха вплетёт её в полотно.

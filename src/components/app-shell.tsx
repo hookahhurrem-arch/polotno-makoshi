@@ -21,7 +21,7 @@ export function AppShell({
       {scene ? <SceneStage name={scene} /> : null}
       <StillLife candle={scene === "table"} yarn={false} />
       <SiteNav />
-      <div className={cn("chamber-page relative z-10 mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col px-6 pb-32 pt-8 md:px-12 md:pb-16 md:pt-12", className)}>
+      <div className={cn("chamber-page relative z-10 mx-auto flex min-h-[calc(100dvh-3.5rem)] max-w-6xl flex-col px-6 pt-8 pb-[calc(8.5rem+env(safe-area-inset-bottom))] md:px-12 md:pt-12 md:pb-16", className)}>
         <div className="flex-1">{children}</div>
         <footer className="mt-16 pb-2">
           <div className="gold-rule mx-auto w-24" />

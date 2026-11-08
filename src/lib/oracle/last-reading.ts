@@ -1,6 +1,7 @@
 import type { SpreadKind } from "./types";
 
 const KEY = "makosh-last-reading";
+const QKEY = "makosh-reading-question";
 
 export type LastReading = {
   s: SpreadKind;
@@ -16,6 +17,30 @@ export type LastReading = {
   c8?: number;
   c9?: number;
 };
+
+export function stashQuestion(question: string) {
+  try {
+    if (question.trim()) window.sessionStorage.setItem(QKEY, question.trim());
+    else window.sessionStorage.removeItem(QKEY);
+  } catch {
+    /* ignore */
+  }
+}
+
+export function loadStashedQuestion(): string {
+  if (typeof window === "undefined") return "";
+  try {
+    return window.sessionStorage.getItem(QKEY)?.trim() ?? "";
+  } catch {
+    return "";
+  }
+}
+
+export function publicSearch(value: LastReading): LastReading {
+  const next = { ...value };
+  delete next.q;
+  return next;
+}
 
 export function saveLastReading(value: LastReading) {
   try {

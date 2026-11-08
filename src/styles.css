@@ -18,7 +18,7 @@
     url("/fonts/ST-Cherty.otf") format("opentype");
   font-weight: 400;
   font-style: normal;
-  font-display: block;
+  font-display: swap;
 }
 
 @theme {
@@ -261,14 +261,14 @@
 }
 
 .field-ink {
-  background: transparent;
+  background: rgb(7 6 5 / 0.45);
   border: 0;
-  border-bottom: 1px solid #2a211e;
+  border-bottom: 1px solid rgb(196 165 116 / 0.55);
   border-radius: 0;
 }
 
 .field-ink::placeholder {
-  color: rgb(201 191 181 / 0.48);
+  color: rgb(215 192 154 / 0.72);
 }
 
 .field-ink:focus,
@@ -278,7 +278,9 @@
 }
 
 .site-mast {
-  background: linear-gradient(180deg, rgb(7 6 5 / 0.82) 0%, rgb(7 6 5 / 0.35) 70%, transparent 100%);
+  background: rgb(10 8 6 / 0.92);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
 }
 
 .brand-mark {
@@ -353,11 +355,15 @@
   background: linear-gradient(180deg, transparent, rgb(11 9 8 / 0.92) 62%);
 }
 
+.drop-cap {
+  clear: both;
+}
+
 .drop-cap::first-letter {
   float: left;
   padding-right: 10px;
   margin-top: 4px;
-  font-family: var(--font-display);
+  font-family: "Old Standard TT", Georgia, serif;
   font-size: 3em;
   font-weight: 400;
   line-height: 0.8;
@@ -787,6 +793,13 @@
   filter: saturate(0.78) brightness(0.55);
 }
 
+.scene-stage[data-scene="wall"] .scene-photo {
+  opacity: 0.72;
+  object-position: center;
+  -webkit-mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+  mask-image: linear-gradient(90deg, transparent 0%, #000 14%, #000 86%, transparent 100%);
+}
+
 .scene-stage[data-scene="book"]::after,
 .scene-stage[data-scene="casket"]::after {
   background: linear-gradient(
@@ -904,6 +917,12 @@
   color: var(--color-muted-foreground);
 }
 
+.spread-count {
+  min-width: 4.75rem;
+  text-align: right;
+  white-space: nowrap;
+}
+
 .spread-num {
   width: 1.6rem;
   font-size: 10px;
@@ -989,18 +1008,25 @@
   position: relative;
   width: min(100%, 20rem);
   aspect-ratio: 2 / 3;
+  overflow: hidden;
 }
 
 .author-photo {
   position: absolute;
-  inset: 11% 13% 14%;
+  top: 22%;
+  right: 25%;
+  bottom: 21%;
+  left: 25%;
+  width: 50%;
+  height: 57%;
   object-fit: cover;
-  object-position: center 18%;
+  object-position: center 22%;
 }
 
 .author-carved {
   position: absolute;
   inset: 0;
+  z-index: 1;
   width: 100%;
   height: 100%;
   object-fit: fill;
@@ -1132,6 +1158,14 @@
   height: calc(100vw * 2195 / 1500);
   overflow: hidden;
   background: #070605;
+}
+
+@media (min-width: 900px) {
+  .weaver-hero {
+    height: calc(100dvh - 4rem);
+    min-height: calc(100dvh - 4rem);
+    max-height: calc(100dvh - 4rem);
+  }
 }
 
 .weaver-scene {

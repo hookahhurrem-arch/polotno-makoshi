@@ -127,7 +127,10 @@ export function WeaverPanel({ question, cards, roles, spread, onWoven, autoStart
   return (
     <section className="gramota mt-10 p-6 sm:p-8">
       <p className="overline">Ткач</p>
-      <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-sand">Прогноз</h2>
+      <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-sand">Трактовка</h2>
+      <p className="mt-2 max-w-md text-sm leading-relaxed text-muted-foreground">
+        ИИ-проводник по авторской системе. Может ошибаться. Это не диагноз и не доказательство событий.
+      </p>
       <div className="gold-rule mt-4 w-16" />
 
       <div className="mt-6 space-y-6">

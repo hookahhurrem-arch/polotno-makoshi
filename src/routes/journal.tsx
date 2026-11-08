@@ -1,7 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useMemo, useState } from "react";
 import { AppShell } from "@/components/app-shell";
-import { loadJournal, removeJournalEntry, updateJournalNote } from "@/lib/oracle/journal";
+import { journalOverSoftLimit, journalSaveStatus, loadJournal, mergeJournal, removeJournalEntry, saveJournal, updateJournalNote } from "@/lib/oracle/journal";
 import { spreadTitle } from "@/lib/oracle/spreads";
 import { cardDisplayTitle, padCardNumber } from "@/lib/oracle/types";
 import { useOracleStore } from "@/lib/oracle/store";
@@ -40,13 +40,63 @@ function JournalPage() {
     <AppShell scene="casket">
       <header className="max-w-xl">
         <h1 className="display-title text-[2.6rem] sm:text-5xl">Архив</h1>
+        {journalOverSoftLimit(entries) ? (
+          <p className="mt-4 max-w-md text-sm text-sand">
+            Записей уже {entries.length}. Старые не удаляются. Сохраните копию, если телефон начнёт отказывать в записи.
+          </p>
+        ) : null}
+        {journalSaveStatus() !== "ok" ? (
+          <p className="mt-3 text-sm text-sand">Не удалось записать на это устройство. Экспортируйте архив, пока он открыт.</p>
+        ) : null}
         {entries.length ? (
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="Поиск по вопросу"
-            className="field-ink mt-6 h-12 w-full max-w-sm px-0 text-sm"
-          />
+          <div className="mt-6 flex flex-wrap gap-3">
+            <button
+              type="button"
+              className="text-sm text-sand"
+              onClick={() => {
+                const blob = new Blob([JSON.stringify(entries, null, 2)], { type: "application/json" });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement("a");
+                link.href = url;
+                link.download = "polotno-dnevnik.json";
+                link.click();
+                URL.revokeObjectURL(url);
+              }}
+            >
+              Скачать JSON
+            </button>
+            <label className="cursor-pointer text-sm text-sand">
+              Вставить копию
+              <input
+                type="file"
+                accept="application/json"
+                className="sr-only"
+                onChange={(event) => {
+                  const file = event.target.files?.[0];
+                  event.target.value = "";
+                  if (!file) return;
+                  void file.text().then((raw) => {
+                    const parsed = JSON.parse(raw) as unknown;
+                    if (!Array.isArray(parsed)) return;
+                    const { entries: next, added } = mergeJournal(entries, parsed);
+                    if (saveJournal(next)) setEntries(next);
+                    else setEntries(loadJournal());
+                    window.alert(added ? `Добавлено записей: ${added}. Существующие не перезаписаны.` : "Новых записей нет.");
+                  }).catch(() => window.alert("Файл не прочитался."));
+                }}
+              />
+            </label>
+          </div>
+        ) : null}
+        {entries.length ? (
+          <label className="mt-6 block text-sm text-muted-foreground">
+            Поиск по вопросу
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="field-ink mt-2 h-12 w-full max-w-sm px-1 text-sm"
+            />
+          </label>
         ) : (
           <p className="mt-5 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Ларец ещё пуст.{" "}
@@ -80,7 +130,10 @@ function JournalPage() {
                 </div>
                 <button
                   type="button"
-                  onClick={() => setEntries(removeJournalEntry(entry.id))}
+                  onClick={() => {
+                    if (!window.confirm("Удалить эту запись?")) return;
+                    setEntries(removeJournalEntry(entry.id));
+                  }}
                   className="text-xs text-muted-foreground hover:text-sand"
                 >
                   Удалить
