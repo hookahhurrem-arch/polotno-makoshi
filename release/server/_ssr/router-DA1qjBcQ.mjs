@@ -109,7 +109,7 @@ function spreadTitle(kind, count = 0) {
 	return "Расклад";
 }
 //#endregion
-//#region node_modules/.nitro/vite/services/ssr/assets/router-_j2bSlSF.js
+//#region node_modules/.nitro/vite/services/ssr/assets/router-DA1qjBcQ.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var FALLBACK_MESSAGE = "Что-то пошло не так. Попробуйте обновить страницу.";
@@ -479,7 +479,7 @@ var Route$10 = createRootRoute({
 		})]
 	})
 });
-var $$splitComponentImporter$7 = () => import("./routes-B_G8nKwS.mjs");
+var $$splitComponentImporter$7 = () => import("./routes-S7mMkOOC.mjs");
 var Route$9 = createFileRoute("/")({ component: lazyRouteComponent($$splitComponentImporter$7, "component") });
 var $$splitComponentImporter$6 = () => import("./about-Rf-oMKC7.mjs");
 var Route$8 = createFileRoute("/about")({ component: lazyRouteComponent($$splitComponentImporter$6, "component") });
@@ -487,7 +487,7 @@ var $$splitComponentImporter$5 = () => import("./deck-K75ES6V5.mjs");
 var Route$7 = createFileRoute("/deck")({ component: lazyRouteComponent($$splitComponentImporter$5, "component") });
 var $$splitComponentImporter$4 = () => import("./journal-BTWqk3iD.mjs");
 var Route$6 = createFileRoute("/journal")({ component: lazyRouteComponent($$splitComponentImporter$4, "component") });
-var $$splitComponentImporter$3 = () => import("./reading-DgVfTIL4.mjs");
+var $$splitComponentImporter$3 = () => import("./reading-x-A4Qkb8.mjs");
 var Route$5 = createFileRoute("/reading")({
 	validateSearch: (search) => ({
 		s: parseSpreadId(search.s, search.n),
@@ -830,7 +830,7 @@ var Route$3 = createFileRoute("/api/weave")({ server: { handlers: { POST: async 
 		});
 	}
 } } } });
-var $$splitComponentImporter$2 = () => import("./card._number-BkX8v2HK.mjs");
+var $$splitComponentImporter$2 = () => import("./card._number-BY25xS_X.mjs");
 var Route$2 = createFileRoute("/card/$number")({
 	beforeLoad: ({ params }) => {
 		const n = Number(params.number);
@@ -870,7 +870,7 @@ var Route$2 = createFileRoute("/card/$number")({
 });
 var $$splitComponentImporter$1 = () => import("./studio.index-DmK0sQkk.mjs");
 var Route$1 = createFileRoute("/studio/")({ component: lazyRouteComponent($$splitComponentImporter$1, "component") });
-var $$splitComponentImporter = () => import("./studio._number-iaBWh9Op.mjs");
+var $$splitComponentImporter = () => import("./studio._number-Bafz0B5I.mjs");
 var Route = createFileRoute("/studio/$number")({
 	beforeLoad: ({ params }) => {
 		const n = Number(params.number);

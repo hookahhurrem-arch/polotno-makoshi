@@ -1,13 +1,8 @@
 import { useEffect, useState } from "react";
-import { Link } from "@tanstack/react-router";
 import { fxTier, type FxTier } from "@/lib/fx/quality";
 import { cn } from "@/lib/utils";
 
 const VIEW = "0 0 1500 2195";
-const FATE =
-  "M752 1008 C 748 1050, 728 1082, 736 1118 C 748 1162, 786 1190, 774 1232 C 760 1274, 716 1308, 740 1352 C 768 1400, 808 1438, 780 1484 C 750 1532, 796 1574, 770 1618 C 744 1664, 708 1708, 736 1752 C 764 1792, 798 1828, 754 1864 C 726 1888, 742 1904, 750 1912";
-const HAND =
-  "M708 870 C 748 856, 786 846, 812 840 C 804 878, 782 922, 768 962 C 758 986, 752 1000, 752 1008";
 
 const DUST = [
   [180, 240, 19, 0.9],
@@ -32,7 +27,6 @@ const DUST = [
 
 export function WeaverHero() {
   const [tier, setTier] = useState<FxTier>("lite");
-  const [pulse, setPulse] = useState(false);
 
   useEffect(() => {
     setTier(fxTier());
@@ -40,24 +34,10 @@ export function WeaverHero() {
 
   const live = tier !== "min";
 
-  const runPulse = () => {
-    if (!live || pulse) return;
-    setPulse(true);
-    window.setTimeout(() => setPulse(false), 780);
-  };
-
   return (
     <section className="weaver-hero">
       <svg className="weaver-scene" viewBox={VIEW} preserveAspectRatio="xMidYMid slice" aria-hidden="true">
         <defs>
-          <linearGradient id="fateGlow" x1="0" y1="0" x2="0" y2="1">
-            <stop offset="0%" stopColor="#e8c07a" />
-            <stop offset="45%" stopColor="#c45a4a" />
-            <stop offset="100%" stopColor="#6b1c1c" />
-          </linearGradient>
-          <filter id="fateBlur" x="-20%" y="-8%" width="140%" height="116%">
-            <feGaussianBlur stdDeviation={tier === "full" ? 3.2 : 1.6} />
-          </filter>
           <radialGradient id="candleCore" cx="50%" cy="50%" r="50%">
             <stop offset="0%" stopColor="#e8c07a" stopOpacity="0.95" />
             <stop offset="55%" stopColor="#c45a4a" stopOpacity="0.28" />
@@ -77,15 +57,6 @@ export function WeaverHero() {
         <rect x="0" y="0" width="1500" height="320" fill="url(#topVeil)" />
         <rect x="0" y="1860" width="1500" height="335" fill="url(#botVeil)" />
 
-        <g className={cn("weaver-fate", live && "is-live", pulse && "is-pulse")}>
-          <path d={FATE} pathLength={1} fill="none" stroke="url(#fateGlow)" strokeWidth="14" strokeLinecap="round" filter={tier === "full" ? "url(#fateBlur)" : undefined} className="fate-glow" />
-          <path d={FATE} pathLength={1} fill="none" stroke="url(#fateGlow)" strokeWidth="3.2" strokeLinecap="round" className="fate-core" />
-        </g>
-
-        <g className={cn("weaver-hand", live && "is-live")}>
-          <path d={HAND} fill="none" stroke="#8b2a2a" strokeWidth="2.4" strokeLinecap="round" />
-        </g>
-
         <g className={cn("weaver-candle", live && "is-live")}>
           <circle cx="1036" cy="758" r="54" fill="url(#candleCore)" className="candle-halo" />
           <circle cx="1036" cy="758" r="7" fill="#e8c07a" className="candle-wick" />
@@ -104,26 +75,10 @@ export function WeaverHero() {
               />
             ))
           : null}
-
-        <rect
-          x="560"
-          y="990"
-          width="390"
-          height="930"
-          fill="transparent"
-          className="cloth-hit"
-          onPointerDown={runPulse}
-        />
       </svg>
 
       <div className="weaver-copy weaver-copy-top">
-        <p className="home-aside">Сто восемь нитей. Одна ткань судьбы.</p>
-        <Link to="/reading" className="hero-title weaver-cta">
-          Сплести нити
-        </Link>
-      </div>
-      <div className="weaver-copy weaver-copy-bot">
-        <p className="hero-caption">Коснитесь полотна — нить пройдёт от колыбели до холма.</p>
+        <h1 className="hero-title">Полотно Макоши</h1>
       </div>
     </section>
   );

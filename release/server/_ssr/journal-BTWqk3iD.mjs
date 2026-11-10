@@ -4,7 +4,7 @@ import { w as require_jsx_runtime, x as Link } from "../_libs/@tanstack/react-ro
 import { n as cardDisplayTitle, o as padCardNumber } from "./types-BvDlfgVm.mjs";
 import { w as useOracleStore } from "./sound-7Pi6hGxL.mjs";
 import { t as AppShell } from "./app-shell-CPrj1ZqK.mjs";
-import { l as spreadTitle } from "./router-_j2bSlSF.mjs";
+import { l as spreadTitle } from "./router-DA1qjBcQ.mjs";
 import { a as mergeJournal, c as saveJournal, i as loadJournal, l as updateJournalNote, n as journalOverSoftLimit, r as journalSaveStatus, s as removeJournalEntry } from "./journal-BqmxmrV3.mjs";
 //#region node_modules/.nitro/vite/services/ssr/assets/journal-BTWqk3iD.js
 var import_react = /* @__PURE__ */ __toESM(require_react());

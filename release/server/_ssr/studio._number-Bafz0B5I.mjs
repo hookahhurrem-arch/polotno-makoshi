@@ -6,10 +6,10 @@ import { a as IconCutBack, s as IconDrop, w as useOracleStore } from "./sound-7P
 import { t as AppShell } from "./app-shell-CPrj1ZqK.mjs";
 import { t as Button } from "./button-hXEvWkxz.mjs";
 import { n as toast } from "../_libs/sonner.mjs";
-import { n as Route } from "./router-_j2bSlSF.mjs";
+import { n as Route } from "./router-DA1qjBcQ.mjs";
 import { n as compressImageFile, t as LivingMedia } from "./living-media-B9B_it0z.mjs";
 import { i as Textarea, n as Label, r as StudioGate, t as Input } from "./textarea-CKlOD_EO.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/studio._number-iaBWh9Op.js
+//#region node_modules/.nitro/vite/services/ssr/assets/studio._number-Bafz0B5I.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 function StudioCardPage() {
