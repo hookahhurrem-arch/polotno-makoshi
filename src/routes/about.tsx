@@ -36,10 +36,7 @@ function AboutPage() {
           <p className="overline">Автор</p>
           <h2 className="mt-3 font-display text-4xl tracking-[0.08em] text-sand">Темнояр</h2>
           <div className="gold-rule mt-4 w-16" />
-          <div className="author-frame mt-8">
-            <img src={AUTHOR_IMAGE} alt="Темнояр — Дмитрий" className="author-photo" />
-            <img src="/scenes/frame.webp" alt="" className="author-carved" />
-          </div>
+          <img src={AUTHOR_IMAGE} alt="Темнояр — Дмитрий" className="author-portrait mt-8" />
           <p className="drop-cap mt-8 text-base leading-[1.65]">
             Колоду издаёт Дмитрий. Ведёт её и блог как Темнояр.
           </p>

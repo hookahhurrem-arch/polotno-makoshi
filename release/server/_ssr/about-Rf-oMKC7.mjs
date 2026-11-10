@@ -1,8 +1,8 @@
 import { w as require_jsx_runtime, x as Link } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as DECK_ABOUT, r as DECK_WELCOME, t as AUTHOR_IMAGE, w as useOracleStore } from "./sound-7Pi6hGxL.mjs";
-import { t as AppShell } from "./app-shell-B-tquUDa.mjs";
+import { t as AppShell } from "./app-shell-CPrj1ZqK.mjs";
 import { t as Button } from "./button-hXEvWkxz.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/about-CwY8a7Fx.js
+//#region node_modules/.nitro/vite/services/ssr/assets/about-Rf-oMKC7.js
 var import_jsx_runtime = require_jsx_runtime();
 function AboutPage() {
 	const settings = useOracleStore((s) => s.settings);
@@ -50,17 +50,10 @@ function AboutPage() {
 							children: "Темнояр"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("div", { className: "gold-rule mt-4 w-16" }),
-						/* @__PURE__ */ (0, import_jsx_runtime.jsxs)("div", {
-							className: "author-frame mt-8",
-							children: [/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-								src: AUTHOR_IMAGE,
-								alt: "Темнояр — Дмитрий",
-								className: "author-photo"
-							}), /* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
-								src: "/scenes/frame.webp",
-								alt: "",
-								className: "author-carved"
-							})]
+						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("img", {
+							src: AUTHOR_IMAGE,
+							alt: "Темнояр — Дмитрий",
+							className: "author-portrait mt-8"
 						}),
 						/* @__PURE__ */ (0, import_jsx_runtime.jsx)("p", {
 							className: "drop-cap mt-8 text-base leading-[1.65]",

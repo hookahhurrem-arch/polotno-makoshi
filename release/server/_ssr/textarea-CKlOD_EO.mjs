@@ -4,9 +4,9 @@ import { w as require_jsx_runtime } from "../_libs/@tanstack/react-router+[...].
 import { n as createServerFn } from "./ssr.mjs";
 import { o as object, s as string } from "../_libs/zod.mjs";
 import { g as createSsrRpc, h as cn } from "./sound-7Pi6hGxL.mjs";
-import { t as AppShell } from "./app-shell-B-tquUDa.mjs";
+import { t as AppShell } from "./app-shell-CPrj1ZqK.mjs";
 import { t as Button } from "./button-hXEvWkxz.mjs";
-//#region node_modules/.nitro/vite/services/ssr/assets/textarea-CVSAo0f0.js
+//#region node_modules/.nitro/vite/services/ssr/assets/textarea-CKlOD_EO.js
 var import_react = /* @__PURE__ */ __toESM(require_react());
 var import_jsx_runtime = require_jsx_runtime();
 var loginStudio = createServerFn({ method: "POST" }).validator((input) => object({ password: string().min(1).max(80) }).parse(input)).handler(createSsrRpc("6f97e1772b0eeea273dec8a8561c60a502e145a8c6603fb5956ea69b783f6165"));
