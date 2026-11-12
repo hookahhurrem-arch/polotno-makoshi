@@ -11,8 +11,13 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as ConsultRouteImport } from './routes/consult'
+import { Route as ContactsRouteImport } from './routes/contacts'
 import { Route as DeckRouteImport } from './routes/deck'
 import { Route as JournalRouteImport } from './routes/journal'
+import { Route as LearnRouteImport } from './routes/learn'
+import { Route as OfertaRouteImport } from './routes/oferta'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ReadingRouteImport } from './routes/reading'
 import { Route as ApiCardVideoRouteImport } from './routes/api/card-video'
 import { Route as ApiWeaveRouteImport } from './routes/api/weave'
@@ -30,6 +35,16 @@ const AboutRoute = AboutRouteImport.update({
   path: '/about',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ConsultRoute = ConsultRouteImport.update({
+  id: '/consult',
+  path: '/consult',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactsRoute = ContactsRouteImport.update({
+  id: '/contacts',
+  path: '/contacts',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const DeckRoute = DeckRouteImport.update({
   id: '/deck',
   path: '/deck',
@@ -38,6 +53,21 @@ const DeckRoute = DeckRouteImport.update({
 const JournalRoute = JournalRouteImport.update({
   id: '/journal',
   path: '/journal',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const LearnRoute = LearnRouteImport.update({
+  id: '/learn',
+  path: '/learn',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const OfertaRoute = OfertaRouteImport.update({
+  id: '/oferta',
+  path: '/oferta',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ReadingRoute = ReadingRouteImport.update({
@@ -74,8 +104,13 @@ const StudioNumberRoute = StudioNumberRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/consult': typeof ConsultRoute
+  '/contacts': typeof ContactsRoute
   '/deck': typeof DeckRoute
   '/journal': typeof JournalRoute
+  '/learn': typeof LearnRoute
+  '/oferta': typeof OfertaRoute
+  '/privacy': typeof PrivacyRoute
   '/reading': typeof ReadingRoute
   '/api/card-video': typeof ApiCardVideoRoute
   '/api/weave': typeof ApiWeaveRoute
@@ -86,8 +121,13 @@ export interface FileRoutesByFullPath {
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/consult': typeof ConsultRoute
+  '/contacts': typeof ContactsRoute
   '/deck': typeof DeckRoute
   '/journal': typeof JournalRoute
+  '/learn': typeof LearnRoute
+  '/oferta': typeof OfertaRoute
+  '/privacy': typeof PrivacyRoute
   '/reading': typeof ReadingRoute
   '/api/card-video': typeof ApiCardVideoRoute
   '/api/weave': typeof ApiWeaveRoute
@@ -99,8 +139,13 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
+  '/consult': typeof ConsultRoute
+  '/contacts': typeof ContactsRoute
   '/deck': typeof DeckRoute
   '/journal': typeof JournalRoute
+  '/learn': typeof LearnRoute
+  '/oferta': typeof OfertaRoute
+  '/privacy': typeof PrivacyRoute
   '/reading': typeof ReadingRoute
   '/api/card-video': typeof ApiCardVideoRoute
   '/api/weave': typeof ApiWeaveRoute
@@ -113,8 +158,13 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/about'
+    | '/consult'
+    | '/contacts'
     | '/deck'
     | '/journal'
+    | '/learn'
+    | '/oferta'
+    | '/privacy'
     | '/reading'
     | '/api/card-video'
     | '/api/weave'
@@ -125,8 +175,13 @@ export interface FileRouteTypes {
   to:
     | '/'
     | '/about'
+    | '/consult'
+    | '/contacts'
     | '/deck'
     | '/journal'
+    | '/learn'
+    | '/oferta'
+    | '/privacy'
     | '/reading'
     | '/api/card-video'
     | '/api/weave'
@@ -137,8 +192,13 @@ export interface FileRouteTypes {
     | '__root__'
     | '/'
     | '/about'
+    | '/consult'
+    | '/contacts'
     | '/deck'
     | '/journal'
+    | '/learn'
+    | '/oferta'
+    | '/privacy'
     | '/reading'
     | '/api/card-video'
     | '/api/weave'
@@ -150,8 +210,13 @@ export interface FileRouteTypes {
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
+  ConsultRoute: typeof ConsultRoute
+  ContactsRoute: typeof ContactsRoute
   DeckRoute: typeof DeckRoute
   JournalRoute: typeof JournalRoute
+  LearnRoute: typeof LearnRoute
+  OfertaRoute: typeof OfertaRoute
+  PrivacyRoute: typeof PrivacyRoute
   ReadingRoute: typeof ReadingRoute
   ApiCardVideoRoute: typeof ApiCardVideoRoute
   ApiWeaveRoute: typeof ApiWeaveRoute
@@ -176,6 +241,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/consult': {
+      id: '/consult'
+      path: '/consult'
+      fullPath: '/consult'
+      preLoaderRoute: typeof ConsultRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contacts': {
+      id: '/contacts'
+      path: '/contacts'
+      fullPath: '/contacts'
+      preLoaderRoute: typeof ContactsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/deck': {
       id: '/deck'
       path: '/deck'
@@ -188,6 +267,27 @@ declare module '@tanstack/react-router' {
       path: '/journal'
       fullPath: '/journal'
       preLoaderRoute: typeof JournalRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/learn': {
+      id: '/learn'
+      path: '/learn'
+      fullPath: '/learn'
+      preLoaderRoute: typeof LearnRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/oferta': {
+      id: '/oferta'
+      path: '/oferta'
+      fullPath: '/oferta'
+      preLoaderRoute: typeof OfertaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/reading': {
@@ -238,8 +338,13 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
+  ConsultRoute: ConsultRoute,
+  ContactsRoute: ContactsRoute,
   DeckRoute: DeckRoute,
   JournalRoute: JournalRoute,
+  LearnRoute: LearnRoute,
+  OfertaRoute: OfertaRoute,
+  PrivacyRoute: PrivacyRoute,
   ReadingRoute: ReadingRoute,
   ApiCardVideoRoute: ApiCardVideoRoute,
   ApiWeaveRoute: ApiWeaveRoute,

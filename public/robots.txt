@@ -1,6 +1,6 @@
 User-agent: *
 Allow: /
-Disallow: /journal
 Disallow: /studio
+Disallow: /reading
 
 Sitemap: https://temnoiar.ru/sitemap.xml

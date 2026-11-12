@@ -1,6 +1,6 @@
 import { r as __exportAll$1 } from "../_runtime.mjs";
 import { n as require_react } from "../_libs/@radix-ui/react-compose-refs+[...].mjs";
-import { A as toCrossJSONAsync, B as executeRewriteInput, F as getStylesheetHref, G as isPromise, I as resolveManifestAssetLink, J as parseRedirect, L as resolveManifestCssLink, O as fromJSON, P as getScriptPreloadAttrs, R as waitForReason, V as invariant, W as isDangerousProtocol, X as isNotFound, Y as rootRouteId, a as disposeSsrResponse, c as replaceSsrResponse, h as RouterProvider, i as defineHandlerCallback, j as toCrossJSONStream, l as stripSsrResponseBody, o as isSsrResponse, q as isRedirect, r as bindSsrResponseToRequest, s as normalizeSsrResponse, t as renderRouterToStream, w as require_jsx_runtime, z as _getRenderedMatches } from "../_libs/@tanstack/react-router+[...].mjs";
+import { A as toCrossJSONAsync, B as executeRewriteInput, F as getStylesheetHref, G as isPromise, I as resolveManifestAssetLink, J as parseRedirect, L as resolveManifestCssLink, O as fromJSON, P as getScriptPreloadAttrs, R as waitForReason, V as invariant, W as isDangerousProtocol, X as rootRouteId, Z as isNotFound, a as disposeSsrResponse, c as replaceSsrResponse, h as RouterProvider, i as defineHandlerCallback, j as toCrossJSONStream, l as stripSsrResponseBody, o as isSsrResponse, q as isRedirect, r as bindSsrResponseToRequest, s as normalizeSsrResponse, t as renderRouterToStream, w as require_jsx_runtime, z as _getRenderedMatches } from "../_libs/@tanstack/react-router+[...].mjs";
 import { n as createServerHistory } from "../_libs/tanstack__history.mjs";
 import { a as defaultSerovalDeserializerPlugins, i as createRawStreamRPCPlugin, n as attachRouterServerSsrUtils, o as makeSerovalPlugin, r as getNormalizedURL, s as createSerializationAdapter, t as mergeHeaders } from "../_libs/@tanstack/router-core+[...].mjs";
 import { i as toResponse, n as parseCookies, r as setCookie, t as H3Event } from "../_libs/h3-v2+rou3.mjs";
@@ -154,7 +154,7 @@ var HEADERS = { TSS_SHELL: "X-TSS_SHELL" };
 * the dev styles URL for route-scoped CSS collection.
 */
 async function getStartManifest(matchedRoutes) {
-	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-DUsZj9wR.mjs");
+	const { tsrStartManifest } = await import("../_tanstack-start-manifest_v-B_ph5gzq.mjs");
 	const startManifest = tsrStartManifest();
 	let routes = startManifest.routes;
 	routes[rootRouteId];
@@ -174,10 +174,6 @@ async function getStartManifest(matchedRoutes) {
 	};
 }
 var manifest = {
-	"1dc9218764120d87088736012bb82985ddd14c90927c02739313fd18578f1798": {
-		functionName: "weaveReading_createServerFn_handler",
-		importer: () => import("./weaver-CdmUo09Z.mjs")
-	},
 	"3c5f31336d46197db53890c5199976876134652da4bce22153d894b512ff7ce3": {
 		functionName: "weaveDayThread_createServerFn_handler",
 		importer: () => import("./day-weaver-CtYGWo1K.mjs")
@@ -201,6 +197,10 @@ var manifest = {
 	"98bc9c3983846639a9a378c9bd74e3a0e8457eeae953a5b71cd6c9590da661f7": {
 		functionName: "saveOracleSettings_createServerFn_handler",
 		importer: () => import("./api-DYfxYobI.mjs")
+	},
+	"cdd975f2a7033105b56954dcad6ac76962b3984a2b658ade02048ed99bcf3b95": {
+		functionName: "submitConsult_createServerFn_handler",
+		importer: () => import("./consult-C92_6ceC.mjs")
 	},
 	"cfd5decae55058b44b875528811315d769f42d21ae7915a93eedcc4dd80a28e6": {
 		functionName: "fetchOracleState_createServerFn_handler",
@@ -1614,7 +1614,7 @@ var getBaseManifest = getProdBaseManifest;
 var createEarlyHintsForRequest = createEarlyHintsCollector;
 async function loadEntries() {
 	const [routerEntry, startEntry, pluginAdapters] = await Promise.all([
-		import("./router-DA1qjBcQ.mjs").then((n) => n.t),
+		import("./router-tnNsNnK_.mjs").then((n) => n.t),
 		import("./start-5Z2QO8AU.mjs"),
 		import("./empty-plugin-adapters-D9UWiqvJ.mjs")
 	]);

@@ -193,63 +193,69 @@ export function ThreadOfDay() {
   };
 
   return (
-    <section className="still-panel relative isolate z-10 mt-10 p-6 sm:p-8">
-      <p className="font-display text-xl tracking-[0.08em] text-gold">Нить дня</p>
-      <h2 className="mt-3 font-display text-3xl tracking-[0.08em] text-sand sm:text-4xl">Одна карта на сутки</h2>
-      <div className="gold-rule mt-4 w-16" />
-      <p className="mt-4 max-w-sm text-sm leading-relaxed text-muted-foreground">
-        Касанием откройте карту дня. Это символический фокус суток и повод заметить своё, а не обещание событий до полуночи.
-      </p>
-      {settled ? (
-        <div className="bind-stage mx-auto mt-6 w-36 sm:w-40">
-          <div className="aspect-card overflow-hidden">
-            <CardFace key={card.number} card={card} className="size-full" showTitle={false} />
-          </div>
-        </div>
-      ) : (
-        <button type="button" onClick={flip} className="bind-stage mx-auto mt-6 block w-36 sm:w-40" aria-label="Открыть карту дня">
-          <div className="flip-scene aspect-card w-full">
-            <div className={cn("flip-card", open && "is-open")}>
-              <div className="flip-face">
-                <CardBack className="size-full" />
-              </div>
-              <div className="flip-face flip-face-front">
-                <CardFace key={card.number} card={card} className="size-full" showTitle={false} />
-              </div>
+    <section id="day" className="day-loom">
+      <div className="day-copy">
+        <p className="font-display text-xl tracking-[0.08em] text-gold">Нить дня</p>
+        <h2 className="mt-3 font-display text-4xl tracking-[0.08em] text-sand sm:text-5xl">Одна карта на сутки</h2>
+        <div className="gold-rule mt-4 w-16" />
+        <p className="ink mt-4">
+          Касанием откройте карту дня. Это символический фокус суток и повод заметить своё, а не обещание событий до полуночи.
+        </p>
+        {!open ? (
+          <button type="button" onClick={flip} className="btn-cloth mt-7">
+            Открыть карту
+          </button>
+        ) : null}
+        {open ? <p className="mt-5 font-display text-2xl tracking-[0.08em] text-sand">{cardDisplayTitle(card)}</p> : null}
+        {open && busy && !reading ? (
+          <p className="mt-6 flex items-center gap-2 text-sm text-muted-foreground">
+            <IconThreadKnot className="text-primary" />
+            Нить дня тянется…
+          </p>
+        ) : null}
+        {textOn && reading ? <DayBlock reading={reading} reveal /> : null}
+        {textOn && reading ? (
+          <>
+            <Link
+              to="/card/$number"
+              params={{ number: String(card.number) }}
+              className="mt-8 inline-block text-sm tracking-[0.14em] text-gold uppercase"
+            >
+              Читать полное значение
+            </Link>
+            <div className="mt-6 flex flex-wrap gap-4">
+              <Link to="/learn" className="text-link">
+                Узнать расклады
+              </Link>
+              <Link to="/consult" className="text-link">
+                Разобрать с Темнояром
+              </Link>
+            </div>
+          </>
+        ) : null}
+      </div>
+      <div className="day-stage">
+        {settled ? (
+          <div className="bind-stage w-40 sm:w-52">
+            <div className="aspect-card overflow-hidden">
+              <CardFace key={card.number} card={card} className="size-full" showTitle={false} />
             </div>
           </div>
-          <svg className={cn("bind-thread", open && "is-loose")} viewBox="0 0 100 150" fill="none" aria-hidden="true">
-            <path d="M12 18 C 38 8, 62 28, 88 16 S 92 70, 78 92 S 28 128, 18 142" stroke="#6B1C1C" strokeWidth="3.2" />
-            <path d="M22 8 C 8 52, 90 58, 70 148" stroke="#8B2A2A" strokeWidth="2.2" />
-          </svg>
-        </button>
-      )}
-      {!open ? (
-        <button type="button" onClick={flip} className="btn-cloth mt-7">
-          Открыть карту
-        </button>
-      ) : null}
-      {open ? (
-        <p className="mt-5 text-center font-display text-2xl tracking-[0.08em] text-sand">
-          {cardDisplayTitle(card)}
-        </p>
-      ) : null}
-      {open && busy && !reading ? (
-        <p className="mt-6 flex items-center justify-center gap-2 text-sm text-muted-foreground">
-          <IconThreadKnot className="text-primary" />
-          Нить дня тянется…
-        </p>
-      ) : null}
-      {textOn && reading ? <DayBlock reading={reading} reveal /> : null}
-      {textOn && reading ? (
-        <Link
-          to="/card/$number"
-          params={{ number: String(card.number) }}
-          className="mt-8 block text-center text-sm tracking-[0.14em] text-gold uppercase"
-        >
-          Читать полное значение
-        </Link>
-      ) : null}
+        ) : (
+          <button type="button" onClick={flip} className="bind-stage block w-40 sm:w-52" aria-label="Открыть карту дня">
+            <div className="flip-scene aspect-card w-full">
+              <div className={cn("flip-card", open && "is-open")}>
+                <div className="flip-face">
+                  <CardBack className="size-full" />
+                </div>
+                <div className="flip-face flip-face-front">
+                  <CardFace key={card.number} card={card} className="size-full" showTitle={false} />
+                </div>
+              </div>
+            </div>
+          </button>
+        )}
+      </div>
     </section>
   );
 }

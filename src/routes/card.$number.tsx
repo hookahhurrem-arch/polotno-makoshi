@@ -1,11 +1,10 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
 import { IconCutBack, IconCutForward } from "@/components/brand-icons";
 import { AppShell } from "@/components/app-shell";
 import { CardSwipe } from "@/components/card-swipe";
 import { LivingMedia } from "@/components/living-media";
 import { Button } from "@/components/ui/button";
-import { loadLastReading, publicSearch } from "@/lib/oracle/last-reading";
 import { DECK_SIZE, cardDisplayTitle, emptyCard, padCardNumber } from "@/lib/oracle/types";
 import { useOracleStore } from "@/lib/oracle/store";
 
@@ -51,10 +50,8 @@ function CardPage() {
   const ensureVideo = useOracleStore((s) => s.ensureVideo);
   const prev = n === 1 ? DECK_SIZE : n - 1;
   const next = n === DECK_SIZE ? 1 : n + 1;
-  const [last, setLast] = useState<ReturnType<typeof loadLastReading>>(null);
 
   useEffect(() => {
-    setLast(loadLastReading());
     rememberCard(n);
     void ensureVideo(n);
   }, [n, ensureVideo]);
@@ -89,25 +86,10 @@ function CardPage() {
             </Link>
           </div>
           <div className="max-w-xl">
-            {last ? (
-              <Link
-                to="/reading"
-                search={publicSearch(last)}
-                className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-              >
-                <IconCutBack />
-                Назад к раскладу
-              </Link>
-            ) : (
-              <Link
-                to="/deck"
-                hash={`card-${n}`}
-                className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground"
-              >
-                <IconCutBack />
-                Назад к книге
-              </Link>
-            )}
+            <Link to="/deck" hash={`card-${n}`} className="mb-6 inline-flex items-center gap-2 text-sm text-muted-foreground hover:text-foreground">
+              <IconCutBack />
+              Назад к книге
+            </Link>
             <p className="overline tabular-nums">{padCardNumber(card.number)}</p>
             <h1 className="mt-3 font-display text-5xl tracking-[0.08em] text-sand sm:text-6xl">{cardDisplayTitle(card)}</h1>
             <div className="gold-rule mt-5 w-16" />

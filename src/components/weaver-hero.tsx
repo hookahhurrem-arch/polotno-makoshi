@@ -79,6 +79,15 @@ export function WeaverHero() {
 
       <div className="weaver-copy weaver-copy-top">
         <h1 className="hero-title">Полотно Макоши</h1>
+        <p className="hero-kicker">Сто восемь нитей. Одна ткань судьбы.</p>
+        <div className="hero-actions">
+          <a href="#day" className="btn-cloth">
+            Открыть карту дня
+          </a>
+          <a href="#consult" className="btn-ghost">
+            Записаться на консультацию
+          </a>
+        </div>
       </div>
     </section>
   );

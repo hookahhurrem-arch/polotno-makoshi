@@ -1,6 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { AppShell } from "@/components/app-shell";
-import { Button } from "@/components/ui/button";
 import { DECK_ABOUT, DECK_WELCOME } from "@/lib/oracle/deck-data";
 import { AUTHOR_IMAGE } from "@/lib/oracle/seed";
 import { useOracleStore } from "@/lib/oracle/store";
@@ -17,12 +16,12 @@ function AboutPage() {
         <p className="overline">О Полотне</p>
         <h1 className="display-title mt-4 text-[2.8rem] sm:text-6xl">О Полотне</h1>
         <div className="gold-rule mt-5 w-20" />
-        <p className="mt-5 text-base leading-[1.6] text-muted-foreground">{settings.tagline}</p>
-        <p className="drop-cap mt-10 text-base leading-[1.65]">{DECK_WELCOME}</p>
+        <p className="ink mt-5">{settings.tagline}</p>
+        <p className="drop-cap ink mt-10">{DECK_WELCOME}</p>
         {aboutBlocks.map((para, i) => (
           <div key={para.slice(0, 24)}>
             {i > 0 ? <div className="gold-split" /> : null}
-            <p className="mt-0 text-base leading-[1.65]">{para}</p>
+            <p className="ink">{para}</p>
           </div>
         ))}
 
@@ -55,13 +54,13 @@ function AboutPage() {
           </p>
         </section>
 
-        <div className="mt-16 flex flex-wrap gap-2">
-          <Button asChild>
-            <Link to="/reading">Вытянуть нить</Link>
-          </Button>
-          <Button asChild variant="outline">
-            <Link to="/deck">Открыть книгу</Link>
-          </Button>
+        <div className="mt-16 flex flex-wrap gap-3">
+          <Link to="/" hash="day" className="btn-cloth">
+            Вытянуть нить
+          </Link>
+          <Link to="/deck" className="btn-ghost">
+            Открыть книгу
+          </Link>
         </div>
       </article>
     </AppShell>
